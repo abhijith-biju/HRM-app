@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
-        <div class="blur-overlay display-none"></div>
+        <div class="display-none" id="blur-overlay"></div>
         <nav>
             <div class="navbar flex-container">
                 <a href="">
@@ -22,5 +22,19 @@
                 </a>
             </div>
         </nav>
+        <main>
+            <button type="button" id="add-employee-btn">
+                <img
+                    src="assets/images/add-employee-icon.svg"
+                    alt="add new employee"
+                />
+            </button>
+
+            <div id="modal-body" class="display-none">
+                <h2 class="text-center">Enter Details</h2>
+            </div>
+        </main>
+
+        <script src="scripts/modal.js"></script>
     </body>
 </html>

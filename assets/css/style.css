@@ -1,6 +1,7 @@
 :root {
     --max-width: 1920px;
     --primary-font: Arial, Helvetica, sans-serif;
+    --primary-clr: #fff;
 }
 
 html {
@@ -18,7 +19,8 @@ a {
     color: inherit;
 }
 
-.blur-overlay {
+#blur-overlay {
+    cursor: pointer;
     position: absolute;
     inset: 0 0 0 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -41,4 +43,31 @@ nav {
         margin: 0;
         font-size: 1.5em;
     }
+}
+
+main {
+    max-width: var(--max-width);
+    padding: 20px 10px;
+}
+
+button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+#add-employee-btn {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+
+    &:hover {
+        background-color: #d5d5d5;
+    }
+}
+
+#modal-body {
+    position: absolute;
+    z-index: 10;
+    border: 1px solid #000;
 }
