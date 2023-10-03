@@ -1,0 +1,44 @@
+:root {
+    --max-width: 1920px;
+    --primary-font: Arial, Helvetica, sans-serif;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+    font-family: var(--primary-font);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blur-overlay {
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2.5px);
+}
+
+nav {
+    background-color: #000;
+}
+
+.navbar {
+    height: 64px;
+    max-width: var(--max-width);
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10px;
+
+    h1 {
+        margin: 0;
+        font-size: 1.5em;
+    }
+}
