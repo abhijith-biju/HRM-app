@@ -1,6 +1,6 @@
 'use strict';
 
-const addEmployeeBtn = document.getElementById('add-employee-btn');
+const addEmployeeBtn = document.getElementById('add-emp-btn');
 
 addEmployeeBtn.onclick = function () {
     let modalBody = document.getElementById('modal-body');
@@ -14,7 +14,5 @@ addEmployeeBtn.onclick = function () {
     };
 
     modalBody.classList.remove('display-none');
-    modalBody.style.top = window.innerHeight / 2 - 50 + 'px';
-    modalBody.style.left = window.innerWidth / 2 - 100 + 'px';
     return false;
 };

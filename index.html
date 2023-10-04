@@ -16,25 +16,243 @@
     <body>
         <div class="display-none" id="blur-overlay"></div>
         <nav>
-            <div class="navbar flex-container">
+            <div class="navbar flex-container margin-inline-auto">
                 <a href="">
                     <h1>HRM APP</h1>
                 </a>
             </div>
         </nav>
-        <main>
-            <button type="button" id="add-employee-btn">
+        <main class="margin-inline-auto">
+            <button type="button" id="add-emp-btn">
                 <img
                     src="assets/images/add-employee-icon.svg"
                     alt="add new employee"
+                    draggable="false"
                 />
             </button>
 
-            <div id="modal-body" class="display-none">
-                <h2 class="text-center">Enter Details</h2>
+            <div id="modal-body" class="">
+                <form action="" id="add-emp-form">
+                    <div class="form-entry form section">
+                        <label
+                            for="profile-photo-input"
+                            class="profile-photo-label display-block margin-inline-auto"
+                        >
+                            <img
+                                src="assets/images/employee-avatar.svg"
+                                alt="employee image"
+                                draggable="false"
+                                class="profile-photo"
+                            />
+                            <input
+                                type="file"
+                                id="profile-photo-input"
+                                class="display-none"
+                                name="profile-photo"
+                                accept="image/*"
+                                required
+                            />
+                        </label>
+                        <p class="error-msg text-center display-hidden">
+                            Hello
+                        </p>
+                    </div>
+
+                    <div class="form section">
+                        <div class="form-row flex-container">
+                            <div class="form-entry">
+                                <label for="full-name" class="required-field"
+                                    >Name</label
+                                >
+                                <input
+                                    type="text"
+                                    id="full-name"
+                                    name="name"
+                                    minlength="3"
+                                    maxlength="50"
+                                    required
+                                />
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                            <div class="form-entry">
+                                <label for="person-email" class="required-field"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    id="person-email"
+                                    name="email"
+                                    required
+                                />
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row flex-container">
+                            <div class="form-entry">
+                                <label for="person-dob" class="required-field"
+                                    >Date Of Birth</label
+                                >
+                                <input
+                                    type="date"
+                                    id="person-dob"
+                                    name="dob"
+                                    required
+                                />
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                            <div class="form-entry">
+                                <h3 class="required-field">Gender</h3>
+                                <div class="flex-container checkbox-container">
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="male"
+                                            required
+                                            checked
+                                        />
+                                        Male</label
+                                    >
+
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="female"
+                                            required
+                                        />
+                                        Female</label
+                                    >
+
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            value="other"
+                                            required
+                                        />
+                                        Other
+                                    </label>
+                                </div>
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                        </div>
+                        <div class="form-row flex-container">
+                            <div class="form-entry">
+                                <label for="address" class="required-field"
+                                    >Address</label
+                                >
+                                <textarea
+                                    name="address"
+                                    id="address"
+                                    minlength="3"
+                                    maxlength="500"
+                                    rows="2"
+                                    required
+                                    set
+                                ></textarea>
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-row flex-container">
+                            <div class="form-entry">
+                                <label for="company-role" class="required-field"
+                                    >Role</label
+                                >
+                                <select name="company-role" id="company-role">
+                                    <option value="developer" selected>
+                                        Developer
+                                    </option>
+                                    <option value="intern">Intern</option>
+                                    <option value="senior-developer">
+                                        Senior Developer
+                                    </option>
+                                    <option value="manager">Manager</option>
+                                    <option value="director">Director</option>
+                                </select>
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+
+                            <div class="form-entry">
+                                <label for="company-dept" class="required-field"
+                                    >Department</label
+                                >
+                                <select name="company-role" id="company-dept">
+                                    <option value="backend" selected>
+                                        Backend
+                                    </option>
+                                    <option value="qa">QA</option>
+                                    <option value="frontend">Frontend</option>
+                                </select>
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                        </div>
+                        <div class="form-row flex-container">
+                            <div class="form-entry">
+                                <label for="person-doj" class="required-field"
+                                    >Date Of Joining</label
+                                >
+                                <input
+                                    type="date"
+                                    id="person-doj"
+                                    name="dob"
+                                    required
+                                />
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+
+                            <div class="form-entry">
+                                <label
+                                    for="company-location"
+                                    class="required-field"
+                                    >Location</label
+                                >
+                                <select
+                                    name="company-location"
+                                    id="company-location"
+                                >
+                                    <option value="trivandrum" selected>
+                                        Trivandrum
+                                    </option>
+                                    <option value="kochi">Kochi</option>
+                                    <option value="noida">Noida</option>
+                                    <option value="chennai">Chennai</option>
+                                </select>
+                                <p class="error-msg display-hidden">Hello</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <h3 class="required-field">Skills</h3>
+                            <div class="form-entry skills-input-container">
+                                <select
+                                    name="emp-skills"
+                                    id="emp-skills"
+                                    class="margin-inline-auto"
+                                    autocomplete="off"
+                                >
+                                    <option value="" disabled selected hidden>
+                                        Add a skill
+                                    </option>
+                                    <option value="html">HTML</option>
+                                    <option value="css">CSS</option>
+                                    <option value="javascript">
+                                        JavaScript
+                                    </option>
+                                    <option value="reactjs">ReactJS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </main>
 
         <script src="scripts/modal.js"></script>
+        <!-- <script src="scripts/test.js"></script> -->
     </body>
 </html>
