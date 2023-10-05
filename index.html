@@ -9,12 +9,17 @@
             href="assets/images/resources.ico"
             type="image/x-icon"
         />
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
         <link rel="stylesheet" href="assets/css/normalize.css" />
         <link rel="stylesheet" href="assets/css/common.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
-        <div class="display-none" id="blur-overlay"></div>
+        <div id="blur-overlay" class=""></div>
         <nav>
             <div class="navbar flex-container margin-inline-auto">
                 <a href="">
@@ -23,7 +28,11 @@
             </div>
         </nav>
         <main class="margin-inline-auto">
-            <button type="button" id="add-emp-btn">
+            <button
+                type="button"
+                id="add-emp-btn"
+                data-modal-id="add-emp-modal"
+            >
                 <img
                     src="assets/images/add-employee-icon.svg"
                     alt="add new employee"
@@ -31,18 +40,20 @@
                 />
             </button>
 
-            <div id="modal-body" class="">
+            <div class="modal-body" id="add-emp-modal">
                 <form action="" id="add-emp-form">
                     <div class="form-entry form section">
                         <label
                             for="profile-photo-input"
-                            class="profile-photo-label display-block margin-inline-auto"
+                            class="display-block margin-inline-auto"
+                            id="profile-photo-label"
                         >
                             <img
                                 src="assets/images/employee-avatar.svg"
                                 alt="employee image"
                                 draggable="false"
                                 class="profile-photo"
+                                title="Add a profile photo"
                             />
                             <input
                                 type="file"
@@ -229,30 +240,78 @@
                         <div class="form-row">
                             <h3 class="required-field">Skills</h3>
                             <div class="form-entry skills-input-container">
-                                <select
-                                    name="emp-skills"
-                                    id="emp-skills"
-                                    class="margin-inline-auto"
-                                    autocomplete="off"
+                                <div
+                                    class="custom-select-wrap margin-inline-auto"
                                 >
-                                    <option value="" disabled selected hidden>
-                                        Add a skill
-                                    </option>
-                                    <option value="html">HTML</option>
-                                    <option value="css">CSS</option>
-                                    <option value="javascript">
-                                        JavaScript
-                                    </option>
-                                    <option value="reactjs">ReactJS</option>
-                                </select>
+                                    <input
+                                        type="text"
+                                        placeholder="Add a skill"
+                                    />
+                                    <div class="select-options display-none">
+                                        <ul>
+                                            <li data-value="HTML">HTML</li>
+                                            <li data-value="CSS">CSS</li>
+                                            <li data-value="JavaScript">
+                                                JavaScript
+                                            </li>
+                                            <li data-value="ReactJS">
+                                                ReactJS
+                                            </li>
+                                            <li data-value="AngularJS">
+                                                AngularJS
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <ul
+                                    class="selected-skills-container flex-container"
+                                >
+                                    <li class="skill-card flex-container">
+                                        <span>HTML</span>
+                                        <span
+                                            class="material-symbols-rounded icon"
+                                        >
+                                            cancel
+                                        </span>
+                                    </li>
+                                    <li class="skill-card flex-container">
+                                        <span>CSS</span>
+                                        <span
+                                            class="material-symbols-rounded icon"
+                                        >
+                                            cancel
+                                        </span>
+                                    </li>
+                                    <li class="skill-card flex-container">
+                                        <span>JavaScript</span>
+                                        <span
+                                            class="material-symbols-rounded icon"
+                                        >
+                                            cancel
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
+                            <p class="error-msg display-hidden">Hello</p>
                         </div>
+                    </div>
+                    <div class="flex-container form-controls-container">
+                        <button
+                            type="button"
+                            data-modal-id="add-emp-modal"
+                            onclick="formCancel(event)"
+                        >
+                            CANCEL
+                        </button>
+                        <button type="submit">SUBMIT</button>
                     </div>
                 </form>
             </div>
         </main>
 
         <script src="scripts/modal.js"></script>
-        <!-- <script src="scripts/test.js"></script> -->
+        <script src="scripts/formPhotoInput.js"></script>
+        <script src="scripts/customDropdown.js"></script>
+        <script src="scripts/formCancel.js"></script>
     </body>
 </html>
