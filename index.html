@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
     <body>
-        <div id="blur-overlay" class=""></div>
+        <div id="blur-overlay" class="display-none"></div>
         <nav>
             <div class="navbar flex-container margin-inline-auto">
                 <a href="">
@@ -40,7 +40,7 @@
                 />
             </button>
 
-            <div class="modal-body" id="add-emp-modal">
+            <div class="modal-body display-none" id="add-emp-modal">
                 <form action="" id="add-emp-form">
                     <div class="form-entry form section">
                         <label
@@ -247,21 +247,48 @@
                                         type="text"
                                         placeholder="Add a skill"
                                     />
-                                    <div class="select-options display-none">
-                                        <ul>
-                                            <li data-value="HTML">HTML</li>
-                                            <li data-value="CSS">CSS</li>
-                                            <li data-value="JavaScript">
+                                    <ul class="select-options display-none">
+                                        <li>
+                                            <button
+                                                type="button"
+                                                data-value="HTML"
+                                            >
+                                                HTML
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                type="button"
+                                                data-value="CSS"
+                                            >
+                                                CSS
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                type="button"
+                                                data-value="JavaScript"
+                                            >
                                                 JavaScript
-                                            </li>
-                                            <li data-value="ReactJS">
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                type="button"
+                                                data-value="ReactJS"
+                                            >
                                                 ReactJS
-                                            </li>
-                                            <li data-value="AngularJS">
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                type="button"
+                                                data-value="AngularJS"
+                                            >
                                                 AngularJS
-                                            </li>
-                                        </ul>
-                                    </div>
+                                            </button>
+                                        </li>
+                                    </ul>
                                 </div>
                                 <ul
                                     class="selected-skills-container flex-container"
@@ -312,6 +339,6 @@
         <script src="scripts/modal.js"></script>
         <script src="scripts/formPhotoInput.js"></script>
         <script src="scripts/customDropdown.js"></script>
-        <script src="scripts/formCancel.js"></script>
+        <script src="scripts/ModalFormCancel.js"></script>
     </body>
 </html>

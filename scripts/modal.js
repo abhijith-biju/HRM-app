@@ -15,6 +15,11 @@ addEmployeeBtn.onclick = function () {
         const formElem = modalBody.getElementsByTagName('form')[0];
         if (formElem) {
             formElem.reset();
+
+            if (formElem.querySelector('.profile-photo')) {
+                formElem.querySelector('.profile-photo').src =
+                    './assets/images/employee-avatar.svg';
+            }
         }
     };
 
