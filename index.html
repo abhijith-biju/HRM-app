@@ -41,7 +41,7 @@
             </button>
 
             <div class="modal-body display-none" id="add-emp-modal">
-                <form action="" id="add-emp-form">
+                <form action="" id="add-emp-form" novalidate>
                     <div class="form-entry form section">
                         <label
                             for="profile-photo-input"
@@ -58,10 +58,11 @@
                             <input
                                 type="file"
                                 id="profile-photo-input"
-                                class="display-none"
                                 name="profile-photo"
                                 accept="image/*"
+                                class="display-none"
                                 required
+                                autocomplete="off"
                             />
                         </label>
                         <p class="error-msg text-center display-hidden">
@@ -121,7 +122,6 @@
                                             name="gender"
                                             value="male"
                                             required
-                                            checked
                                         />
                                         Male</label
                                     >
@@ -161,7 +161,7 @@
                                     maxlength="500"
                                     rows="2"
                                     required
-                                    set
+                                    spellcheck="false"
                                 ></textarea>
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -239,62 +239,64 @@
 
                         <div class="form-row">
                             <h3 class="required-field">Skills</h3>
-                            <div class="form-entry skills-input-container">
-                                <div
-                                    class="custom-select-wrap margin-inline-auto"
-                                >
-                                    <input
-                                        type="text"
-                                        placeholder="Add one or more skills"
-                                    />
-                                    <ul class="select-options display-none">
-                                        <li>
-                                            <button
-                                                type="button"
-                                                data-value="HTML"
-                                            >
-                                                HTML
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                type="button"
-                                                data-value="CSS"
-                                            >
-                                                CSS
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                type="button"
-                                                data-value="JavaScript"
-                                            >
-                                                JavaScript
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                type="button"
-                                                data-value="ReactJS"
-                                            >
-                                                ReactJS
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                type="button"
-                                                data-value="AngularJS"
-                                            >
-                                                AngularJS
-                                            </button>
-                                        </li>
-                                    </ul>
+                            <div class="form-entry">
+                                <div class="skills-input-container">
+                                    <div
+                                        class="custom-select-wrap margin-inline-auto"
+                                    >
+                                        <input
+                                            type="text"
+                                            placeholder="Add one or more skills"
+                                        />
+                                        <ul class="select-options display-none">
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    data-value="HTML"
+                                                >
+                                                    HTML
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    data-value="CSS"
+                                                >
+                                                    CSS
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    data-value="JavaScript"
+                                                >
+                                                    JavaScript
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    data-value="ReactJS"
+                                                >
+                                                    ReactJS
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    type="button"
+                                                    data-value="AngularJS"
+                                                >
+                                                    AngularJS
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <ul
+                                        class="selected-skills-container flex-container"
+                                    ></ul>
                                 </div>
-                                <ul
-                                    class="selected-skills-container flex-container"
-                                ></ul>
+                                <p class="error-msg display-hidden">Hello</p>
                             </div>
-                            <p class="error-msg display-hidden">Hello</p>
                         </div>
                     </div>
                     <div class="flex-container form-controls-container">
@@ -315,5 +317,6 @@
         <script src="scripts/formPhotoInput.js"></script>
         <script src="scripts/customDropdown.js"></script>
         <script src="scripts/addEmployeeCancel.js"></script>
+        <script src="scripts/addEmpFormValidation.js"></script>
     </body>
 </html>
