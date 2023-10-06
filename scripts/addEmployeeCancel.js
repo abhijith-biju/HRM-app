@@ -1,8 +1,8 @@
 'use strict';
 
 function formCancel(e) {
-    const btnElm = e.target.getAttribute('data-modal-id');
-    const modalBody = document.getElementById(btnElm);
+    const modalId = e.target.getAttribute('data-modal-id');
+    const modalBody = document.getElementById(modalId);
     modalBody.classList.add('display-none');
 
     //remove Blurred Overlay
@@ -16,5 +16,11 @@ function formCancel(e) {
         //reset uploaded image
         modalBody.querySelector('#profile-photo-label .profile-photo').src =
             './assets/images/employee-avatar.svg';
+
+        //reset selected skills
+        modalBody.querySelector(
+            '#add-emp-form .selected-skills-container'
+        ).innerHTML = '';
+        selectedSkillsList.clear();
     }
 }

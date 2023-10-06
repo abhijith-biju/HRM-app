@@ -131,7 +131,7 @@ button {
 
 .custom-select-wrap {
     position: relative;
-    width: 150px;
+    width: 200px;
 
     &:focus {
         border: 1px solid green;
@@ -161,14 +161,14 @@ button {
     & .select-options {
         position: absolute;
         /* top: 100%; */
-        top: calc(100% - 1px);
-        /* bottom: calc(100% + 1px); */
+        /* top: calc(100% - 1px); */
+        bottom: calc(100% + 1px);
         left: 0;
         background-color: #fff;
         width: 100%;
         border: 1px solid #b5b5b5;
         border-radius: 5px;
-        z-index: 1;
+        z-index: 100;
         max-height: 82px;
         overflow: auto;
         list-style: none;
@@ -185,7 +185,7 @@ button {
     gap: 8px;
     flex-wrap: wrap;
 
-    & li {
+    & .skill-card {
         height: 25px;
         align-items: center;
         gap: 5px;
@@ -206,6 +206,11 @@ button {
             background-color: darkgreen;
         }
 
+        & .skill-remove-btn {
+            padding: 0;
+            align-items: center;
+        }
+
         & .icon {
             font-size: 1.2em;
         }
@@ -222,15 +227,15 @@ button {
         border-radius: 15px;
         color: #fff;
         font-weight: bold;
-        background-color: #000;
+        background-color: #1d1d1d;
 
         &:hover {
-            background-color: #2f2f2f;
+            background-color: #000;
         }
     }
 
     & button[type='submit'] {
-        background-color: #4681f4;
+        background-color: #236dff;
 
         &:hover {
             background-color: #013eb8;

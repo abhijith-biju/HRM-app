@@ -20,6 +20,12 @@ addEmployeeBtn.onclick = function () {
                 formElem.querySelector('.profile-photo').src =
                     './assets/images/employee-avatar.svg';
             }
+
+            //reset selected skills
+            modalBody.querySelector(
+                '#add-emp-form .selected-skills-container'
+            ).innerHTML = '';
+            selectedSkillsList.clear();
         }
     };
 
