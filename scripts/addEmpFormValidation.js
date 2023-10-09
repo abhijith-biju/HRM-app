@@ -23,8 +23,6 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
 
     for (const inpElem of inpElemList) {
         if (!checkInputValidity(inpElem)) {
-            console.log('Invalid');
-            console.log(inpElem);
             return false;
         }
     }

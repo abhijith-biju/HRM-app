@@ -7,5 +7,9 @@ document
         if (imgFile) {
             document.querySelector('#profile-photo-label .profile-photo').src =
                 URL.createObjectURL(imgFile);
+
+            document
+                .querySelector('#profile-photo-label .profile-photo')
+                .classList.add('border-1');
         }
     });

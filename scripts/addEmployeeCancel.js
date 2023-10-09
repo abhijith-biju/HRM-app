@@ -14,8 +14,11 @@ function formCancel(e) {
         formElem.reset();
 
         //reset uploaded image
-        modalBody.querySelector('#profile-photo-label .profile-photo').src =
-            './assets/images/employee-avatar.svg';
+        const imgElem = modalBody.querySelector(
+            '#profile-photo-label .profile-photo'
+        );
+        imgElem.src = './assets/images/employee-avatar.svg';
+        imgElem.classList.remove('border-1');
 
         //reset selected skills
         modalBody.querySelector(

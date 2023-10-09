@@ -37,7 +37,7 @@ document.querySelector(
             '#add-emp-form .selected-skills-container'
         );
 
-        const liElem = `<li class='skill-card flex-container'>
+        const liElem = `<li class='skill-chip flex-container'>
             <span>${selectedSkill}</span>
             <button type="button" class="flex-container  skill-remove-btn" data-value=${selectedSkill}>
             <span class="material-symbols-rounded icon">
@@ -64,6 +64,6 @@ document.querySelector('#add-emp-form .selected-skills-container').onclick = (
 
         document
             .querySelector('#add-emp-form .selected-skills-container')
-            .removeChild(SkillRemoveBtnElem.closest('.skill-card'));
+            .removeChild(SkillRemoveBtnElem.closest('.skill-chip'));
     }
 };
