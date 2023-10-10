@@ -11,7 +11,23 @@ document.getElementById('clear-filters-btn').onclick = () => {
         elem.selectedIndex = 0;
     });
 
-    tableControlsElem.querySelector('.selected-skills-container').innerHTML =
+    const selectedSkillsContainer = tableControlsElem.querySelector(
+        '.selected-skills-container'
+    );
+
+    selectedSkillsContainer
+        .querySelector('.skill-label')
+        .classList.add('display-none');
+
+    selectedSkillsContainer
+        .querySelector('.skill-label')
+        .classList.remove('flex-container');
+
+    selectedSkillsContainer
+        .querySelector('.selected-skills-list')
+        .classList.remove('pos-absolute', 'display-none');
+
+    selectedSkillsContainer.querySelector('.selected-skills-list').innerHTML =
         '';
     selectedSkillsForSearch.clear();
 };

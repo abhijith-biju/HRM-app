@@ -23,7 +23,7 @@ addEmployeeBtn.onclick = function () {
 
             //reset selected skills
             modalBody.querySelector(
-                '#add-emp-form .selected-skills-container'
+                '#add-emp-form .selected-skills-list'
             ).innerHTML = '';
             selectedSkillsList.clear();
         }

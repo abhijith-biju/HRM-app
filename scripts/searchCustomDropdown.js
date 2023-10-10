@@ -37,6 +37,27 @@ document.querySelector(
             '.table-controls .selected-skills-container'
         );
 
+        const selectedSkillsList = selectedSkillsContainer.querySelector(
+            '.selected-skills-list'
+        );
+
+        if (selectedSkillsForSearch.size === 2) {
+            const skillLabel =
+                selectedSkillsContainer.querySelector('.skill-label');
+
+            skillLabel.classList.remove('display-none');
+            skillLabel.classList.add('flex-container');
+
+            skillLabel.querySelector('.count-label').innerHTML =
+                selectedSkillsForSearch.size;
+
+            selectedSkillsList.classList.add('display-none', 'pos-absolute');
+            selectedSkillsList.classList.remove('flex-container');
+        } else if (selectedSkillsForSearch.size > 2) {
+            selectedSkillsContainer.querySelector('.count-label').innerHTML =
+                selectedSkillsForSearch.size;
+        }
+
         const liElem = `<li class='skill-chip flex-container'>
             <span>${selectedSkill}</span>
             <button type="button" class="flex-container  skill-remove-btn" data-value=${selectedSkill}>
@@ -45,8 +66,7 @@ document.querySelector(
             </span>
         </button>
         </li>`;
-
-        selectedSkillsContainer.innerHTML += liElem;
+        selectedSkillsList.innerHTML += liElem;
     }
 
     document
@@ -54,7 +74,7 @@ document.querySelector(
         .focus();
 };
 
-document.querySelector('.table-controls .selected-skills-container').onclick = (
+document.querySelector('.table-controls .selected-skills-list').onclick = (
     e
 ) => {
     const SkillRemoveBtnElem = e.target.closest('.skill-remove-btn');
@@ -62,8 +82,63 @@ document.querySelector('.table-controls .selected-skills-container').onclick = (
         const removedSkill = SkillRemoveBtnElem.getAttribute('data-value');
         selectedSkillsForSearch.delete(removedSkill);
 
-        document
-            .querySelector('.table-controls .selected-skills-container')
-            .removeChild(SkillRemoveBtnElem.closest('.skill-chip'));
+        const selectedSkillsContainer = document.querySelector(
+            '.table-controls .selected-skills-container'
+        );
+
+        const selectedSkillsList = selectedSkillsContainer.querySelector(
+            '.selected-skills-list'
+        );
+
+        const skillLabel =
+            selectedSkillsContainer.querySelector('.skill-label');
+
+        if (selectedSkillsForSearch.size === 1) {
+            skillLabel.classList.add('display-none');
+            skillLabel.classList.remove('flex-container');
+
+            selectedSkillsList.classList.remove('pos-absolute');
+        } else if (selectedSkillsForSearch.size > 1) {
+            skillLabel.querySelector('.count-label').innerHTML =
+                selectedSkillsForSearch.size;
+        }
+
+        selectedSkillsList.removeChild(
+            SkillRemoveBtnElem.closest('.skill-chip')
+        );
+    }
+
+    document
+        .querySelector(
+            '.table-controls .selected-skills-container .skill-label'
+        )
+        .focus();
+};
+
+document.querySelector(
+    '.table-controls .selected-skills-container .skill-label'
+).onfocus = (e) => {
+    // console.log('skill label focused');
+
+    const selectedSkillsList = document.querySelector(
+        '.table-controls .selected-skills-container .selected-skills-list'
+    );
+    selectedSkillsList.classList.remove('display-none');
+    selectedSkillsList.classList.add('flex-container');
+};
+
+document.querySelector(
+    '.table-controls .selected-skills-container .skill-label'
+).onblur = (e) => {
+    // console.log('skill label blur');
+    const selectedSkillsList = document.querySelector(
+        '.table-controls .selected-skills-container .selected-skills-list'
+    );
+    const isRemoveSkillClicked = selectedSkillsList.contains(e.relatedTarget);
+
+    if (!isRemoveSkillClicked) {
+        // console.log('remove not clicked');
+        selectedSkillsList.classList.add('display-none');
+        selectedSkillsList.classList.remove('flex-container');
     }
 };

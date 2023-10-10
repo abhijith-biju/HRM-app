@@ -111,7 +111,13 @@
                             </li>
                         </ul>
                     </div>
-                    <ul class="selected-skills-container flex-container"></ul>
+                    <div class="selected-skills-container">
+                        <div class="skill-label display-none" tabindex="0">
+                            <span>Skills</span>
+                            <span class="count-label">*</span>
+                        </div>
+                        <ul class="selected-skills-list"></ul>
+                    </div>
                 </div>
 
                 <button type="button" id="clear-filters-btn">Clear</button>
@@ -377,7 +383,7 @@
                                         </ul>
                                     </div>
                                     <ul
-                                        class="selected-skills-container flex-container"
+                                        class="selected-skills-list flex-container"
                                     ></ul>
                                 </div>
                                 <p class="error-msg display-hidden">Hello</p>

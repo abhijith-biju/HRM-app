@@ -34,7 +34,7 @@ document.querySelector(
         selectedSkillsList.add(selectedSkill);
 
         const selectedSkillsContainer = document.querySelector(
-            '#add-emp-form .selected-skills-container'
+            '#add-emp-form .selected-skills-list'
         );
 
         const liElem = `<li class='skill-chip flex-container'>
@@ -54,16 +54,14 @@ document.querySelector(
         .focus();
 };
 
-document.querySelector('#add-emp-form .selected-skills-container').onclick = (
-    e
-) => {
+document.querySelector('#add-emp-form .selected-skills-list').onclick = (e) => {
     const SkillRemoveBtnElem = e.target.closest('.skill-remove-btn');
     if (SkillRemoveBtnElem) {
         const removedSkill = SkillRemoveBtnElem.getAttribute('data-value');
         selectedSkillsList.delete(removedSkill);
 
         document
-            .querySelector('#add-emp-form .selected-skills-container')
+            .querySelector('#add-emp-form .selected-skills-list')
             .removeChild(SkillRemoveBtnElem.closest('.skill-chip'));
     }
 };
