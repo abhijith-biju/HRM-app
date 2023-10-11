@@ -138,6 +138,7 @@ button {
     width: 200px;
 
     & input[type='text'] {
+        height: 25px;
         border: 1px solid #7e7e7e;
         border-radius: 3px;
 
@@ -270,15 +271,15 @@ button {
     }
 
     & .skill-label {
-        background-color: #000;
+        background-color: #272829;
         color: #fff;
         font-size: 0.8em;
         min-height: 25px;
         align-items: center;
         justify-content: space-between;
-        gap: 5px;
+        gap: 7px;
         padding-inline: 8px;
-        border-radius: 15px;
+        border-radius: 3px;
 
         &:hover {
             cursor: pointer;
