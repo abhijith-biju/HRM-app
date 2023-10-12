@@ -1,5 +1,3 @@
-'use strict';
-
 document
     .getElementById('profile-photo-input')
     .addEventListener('change', (event) => {

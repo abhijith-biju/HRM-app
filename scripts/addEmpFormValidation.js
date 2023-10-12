@@ -1,6 +1,14 @@
-'use strict';
+import { selectedSkillsList } from './formCustomDropdown.js';
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
 document.querySelector('#add-emp-form').onsubmit = function (e) {
+    e.preventDefault();
+
     for (const DOMelem of this.querySelectorAll('.error-msg').values()) {
         DOMelem.classList.add('display-hidden');
     }
@@ -19,7 +27,9 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         return true;
     };
 
-    const inpElemList = this.querySelectorAll('input, textarea').values();
+    const inpElemList = this.querySelectorAll(
+        'input:not(.skill-search-input), textarea, select'
+    ).values();
 
     for (const inpElem of inpElemList) {
         if (!checkInputValidity(inpElem)) {
@@ -36,6 +46,27 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         errorMsgContainer.classList.remove('display-hidden');
     }
 
-    e.preventDefault();
-    console.log('No errors in form');
+    const formData = Object.fromEntries(
+        new FormData(document.querySelector('#add-emp-form'))
+    );
+
+    // Initialize Cloud Storage and get a reference to the service
+    const storage = getStorage();
+
+    const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
+
+    // 'file' comes from the Blob or File API
+    uploadBytes(
+        storageRef,
+        document.getElementById('profile-photo-input').files[0]
+    )
+        .then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+            return getDownloadURL(snapshot.ref);
+        })
+        .then((url) => {
+            console.log(url);
+            formData['profile-photo'] = url;
+            console.log(JSON.stringify(formData, null, 2));
+        });
 };

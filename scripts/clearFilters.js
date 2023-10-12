@@ -1,4 +1,4 @@
-'use strict';
+import { selectedSkillsForSearch } from './searchCustomDropdown.js';
 
 document.getElementById('clear-filters-btn').onclick = () => {
     const tableControlsElem = document.querySelector('.table-controls');

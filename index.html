@@ -132,7 +132,7 @@
             </div>
 
             <div class="modal-body display-none" id="add-emp-modal">
-                <form action="" id="add-emp-form" novalidate>
+                <form action="" id="add-emp-form" novalidate autocomplete="off">
                     <div class="form-entry form section">
                         <label
                             for="profile-photo-input"
@@ -153,7 +153,6 @@
                                 accept="image/*"
                                 class="display-none"
                                 required
-                                autocomplete="off"
                             />
                         </label>
                         <p class="error-msg text-center display-hidden">
@@ -172,8 +171,9 @@
                                     id="full-name"
                                     name="name"
                                     minlength="3"
-                                    maxlength="50"
+                                    maxlength="100"
                                     required
+                                    value="ab"
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -186,6 +186,7 @@
                                     id="person-email"
                                     name="email"
                                     required
+                                    value="ab@ab"
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -193,13 +194,15 @@
 
                         <div class="form-row flex-container">
                             <div class="form-entry">
-                                <label for="person-dob" class="required-field"
+                                <label
+                                    for="date-of-birth"
+                                    class="required-field"
                                     >Date Of Birth</label
                                 >
                                 <input
                                     type="date"
-                                    id="person-dob"
-                                    name="dob"
+                                    id="date-of-birth"
+                                    name="date-of-birth"
                                     required
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
@@ -213,6 +216,7 @@
                                             name="gender"
                                             value="male"
                                             required
+                                            checked
                                         />
                                         Male</label
                                     >
@@ -253,7 +257,9 @@
                                     rows="2"
                                     required
                                     spellcheck="false"
-                                ></textarea>
+                                >
+wdwdw</textarea
+                                >
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
                         </div>
@@ -265,7 +271,14 @@
                                 <label for="company-role" class="required-field"
                                     >Role</label
                                 >
-                                <select name="company-role" id="company-role">
+                                <select
+                                    name="company-role"
+                                    id="company-role"
+                                    required
+                                >
+                                    <option value="" disabled>
+                                        Select a role
+                                    </option>
                                     <option value="developer" selected>
                                         Developer
                                     </option>
@@ -283,7 +296,14 @@
                                 <label for="company-dept" class="required-field"
                                     >Department</label
                                 >
-                                <select name="company-dept" id="company-dept">
+                                <select
+                                    name="company-department"
+                                    id="company-dept"
+                                    required
+                                >
+                                    <option value="" disabled>
+                                        Select a department
+                                    </option>
                                     <option value="backend" selected>
                                         Backend
                                     </option>
@@ -295,13 +315,15 @@
                         </div>
                         <div class="form-row flex-container">
                             <div class="form-entry">
-                                <label for="person-doj" class="required-field"
+                                <label
+                                    for="date-of-joining"
+                                    class="required-field"
                                     >Date Of Joining</label
                                 >
                                 <input
                                     type="date"
-                                    id="person-doj"
-                                    name="dob"
+                                    id="date-of-joining"
+                                    name="date-of-joining"
                                     required
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
@@ -316,7 +338,11 @@
                                 <select
                                     name="company-location"
                                     id="company-location"
+                                    required
                                 >
+                                    <option value="" disabled>
+                                        Select a location
+                                    </option>
                                     <option value="trivandrum" selected>
                                         Trivandrum
                                     </option>
@@ -338,6 +364,7 @@
                                         <input
                                             type="text"
                                             placeholder="Add one or more skills"
+                                            class="skill-search-input"
                                         />
                                         <ul class="select-options display-none">
                                             <li>
@@ -394,7 +421,7 @@
                         <button
                             type="button"
                             data-modal-id="add-emp-modal"
-                            onclick="formCancel(event)"
+                            class="cancel-btn"
                         >
                             CANCEL
                         </button>
@@ -403,13 +430,16 @@
                 </form>
             </div>
         </main>
-        <script src="scripts/searchCustomDropdown.js"></script>
-        <script src="scripts/modal.js"></script>
-        <script src="scripts/formPhotoInput.js"></script>
-        <script src="scripts/formCustomDropdown.js"></script>
-        <script src="scripts/addEmployeeCancel.js"></script>
-        <script src="scripts/addEmpFormValidation.js"></script>
+        <script type="module" src="scripts/searchCustomDropdown.js"></script>
+        <script type="module" src="scripts/firebase.js"></script>
+        <script type="module" src="scripts/add-emp-modal.js"></script>
+        <script type="module" src="scripts/dateInputConstraint.js"></script>
+        <script type="module" src="scripts/firebase.js"></script>
+        <script type="module" src="scripts/formPhotoInput.js"></script>
+        <script type="module" src="scripts/formCustomDropdown.js"></script>
+        <script type="module" src="scripts/addEmployeeCancel.js"></script>
+        <script type="module" src="scripts/addEmpFormValidation.js"></script>
         <!-- <script src="scripts/checkInputValidity.js"></script> -->
-        <script src="scripts/clearFilters.js"></script>
+        <script type="module" src="scripts/clearFilters.js"></script>
     </body>
 </html>

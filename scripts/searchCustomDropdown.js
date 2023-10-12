@@ -142,3 +142,5 @@ document.querySelector(
         selectedSkillsList.classList.remove('flex-container');
     }
 };
+
+export { selectedSkillsForSearch };

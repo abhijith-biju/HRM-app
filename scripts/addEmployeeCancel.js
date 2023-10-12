@@ -1,6 +1,6 @@
-'use strict';
+import { selectedSkillsList } from './formCustomDropdown.js';
 
-function formCancel(e) {
+document.querySelector('#add-emp-form .cancel-btn').onclick = (e) => {
     const modalId = e.target.getAttribute('data-modal-id');
     const modalBody = document.getElementById(modalId);
     modalBody.classList.add('display-none');
@@ -25,5 +25,10 @@ function formCancel(e) {
             '#add-emp-form .selected-skills-list'
         ).innerHTML = '';
         selectedSkillsList.clear();
+
+        //reset all input status messages
+        modalBody.querySelectorAll('.error-msg').forEach((elem) => {
+            elem.classList.add('display-hidden');
+        });
     }
-}
+};

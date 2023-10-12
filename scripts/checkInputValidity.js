@@ -1,5 +1,3 @@
-'use strict';
-
 function checkInputValidity(inpElem) {
     const errorMsgContainer = inpElem
         .closest('.form-entry')

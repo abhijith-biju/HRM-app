@@ -1,5 +1,3 @@
-'use strict';
-
 const selectedSkillsList = new Set();
 
 document.querySelector('#add-emp-form .skills-input-container input').onfocus =
@@ -65,3 +63,5 @@ document.querySelector('#add-emp-form .selected-skills-list').onclick = (e) => {
             .removeChild(SkillRemoveBtnElem.closest('.skill-chip'));
     }
 };
+
+export { selectedSkillsList };

@@ -1,8 +1,6 @@
-'use strict';
+import { selectedSkillsList } from './formCustomDropdown.js';
 
-const addEmployeeBtn = document.getElementById('add-emp-btn');
-
-addEmployeeBtn.onclick = function () {
+document.getElementById('add-emp-btn').onclick = function () {
     let modalBody = document.getElementById(this.getAttribute('data-modal-id'));
 
     const blurOverlay = document.getElementById('blur-overlay');
@@ -26,6 +24,11 @@ addEmployeeBtn.onclick = function () {
                 '#add-emp-form .selected-skills-list'
             ).innerHTML = '';
             selectedSkillsList.clear();
+
+            //reset all input status messages
+            modalBody.querySelectorAll('.error-msg').forEach((elem) => {
+                elem.classList.add('display-hidden');
+            });
         }
     };
 
