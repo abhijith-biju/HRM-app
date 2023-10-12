@@ -5,7 +5,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebas
 import {
     getFirestore,
     collection,
-    getDocs,
+    onSnapshot,
+    addDoc,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -27,15 +28,31 @@ const db = getFirestore();
 const colRef = collection(db, 'employees');
 
 // get collection data
-getDocs(colRef)
-    .then((snapshot) => {
-        // console.log(snapshot.docs)
-        let employees = [];
-        snapshot.docs.forEach((doc) => {
-            employees.push({ ...doc.data(), id: doc.id });
-        });
-        console.log(employees);
-    })
-    .catch((err) => {
-        console.log(err.message);
+// getDocs(colRef)
+//     .then((snapshot) => {
+//         let employees = [];
+//         snapshot.docs.forEach((doc) => {
+//             employees.push({ ...doc.data(), id: doc.id });
+//         });
+//         console.log(employees);
+//     })
+//     .catch((err) => {
+//         console.log(err.message);
+//     });
+
+// realtime collection data
+onSnapshot(colRef, (snapshot) => {
+    let employees = [];
+    snapshot.docs.forEach((doc) => {
+        employees.push({ ...doc.data(), id: doc.id });
     });
+    console.log(employees);
+});
+
+const addEmployee = async (empObj) => {
+    // Add a new document with a generated id.
+    const docRef = await addDoc(collection(db, 'employees'), empObj);
+    console.log('Document written with ID: ', docRef.id);
+};
+
+export { addEmployee };

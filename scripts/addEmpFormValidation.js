@@ -1,4 +1,5 @@
 import { selectedSkillsList } from './formCustomDropdown.js';
+import { addEmployee } from './firebase.js';
 import {
     getStorage,
     ref,
@@ -44,29 +45,29 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
 
         errorMsgContainer.innerHTML = 'Select atleast one skill';
         errorMsgContainer.classList.remove('display-hidden');
+        return false;
     }
 
     const formData = Object.fromEntries(
         new FormData(document.querySelector('#add-emp-form'))
     );
 
-    // Initialize Cloud Storage and get a reference to the service
+    formData['skills'] = [...selectedSkillsList];
     const storage = getStorage();
-
     const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
 
-    // 'file' comes from the Blob or File API
     uploadBytes(
         storageRef,
         document.getElementById('profile-photo-input').files[0]
     )
         .then((snapshot) => {
-            console.log('Uploaded a blob or file!');
+            // console.log('Uploaded a blob or file!');
             return getDownloadURL(snapshot.ref);
         })
         .then((url) => {
-            console.log(url);
+            // console.log(url);
             formData['profile-photo'] = url;
-            console.log(JSON.stringify(formData, null, 2));
+            // console.log(JSON.stringify(formData, null, 2));
+            addEmployee(formData);
         });
 };

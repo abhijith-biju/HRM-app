@@ -456,3 +456,16 @@ button {
         }
     }
 }
+
+.employee-table {
+    margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 3px;
+
+    & th,
+    & td {
+        padding: 7px 10px;
+        border: 1px solid #000;
+    }
+}
