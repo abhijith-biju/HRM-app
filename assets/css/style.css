@@ -174,7 +174,7 @@ button {
         width: 100%;
         border: 1px solid #b5b5b5;
         border-radius: 5px;
-        z-index: 100;
+        z-index: 10;
         max-height: 82px;
         overflow: auto;
         list-style: none;
@@ -345,7 +345,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 20;
     border-radius: 5px;
     background-color: #fff;
     padding: 15px;
@@ -354,11 +354,9 @@ button {
 }
 
 #add-emp-form {
-    & {
-        --input-field-height: 1.6em;
-        min-width: 400px;
-        width: 500px;
-    }
+    --input-field-height: 1.6em;
+    min-width: 400px;
+    width: 500px;
 
     & label {
         font-size: 0.8em;
@@ -457,11 +455,10 @@ button {
     }
 }
 
-.employee-table {
+.employees-table {
     margin: 20px 0;
     width: 100%;
     border-spacing: 0;
-    border-collapse: separate;
     border-radius: 10px;
     border: 1px solid #000;
     overflow: hidden;
@@ -469,7 +466,55 @@ button {
     & th,
     & td {
         padding: 7px 10px;
+    }
+
+    & th {
+        background-color: #d5d5d5;
         text-align: left;
+    }
+}
+
+.employees-table th:not(:last-child),
+.employees-table td:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+.employees-table th,
+.employees-table tr:not(:last-child) td {
+    border-bottom: 1px solid #000;
+}
+
+.employee-actions {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+    gap: 25px;
+
+    & li button {
+        padding: 0;
+        align-items: center;
+    }
+
+    & li span {
+        color: #000;
+
+        &:hover {
+            transform: scale(1.2);
+            font-variation-settings: 'FILL' 1;
+        }
+    }
+
+    & .view-emp-btn span {
+        color: green;
+    }
+
+    & .edit-emp-btn span {
+        color: orange;
+    }
+
+    & .delete-emp-btn span {
+        color: red;
     }
 
     & th {
