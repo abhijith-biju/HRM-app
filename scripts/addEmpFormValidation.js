@@ -1,5 +1,6 @@
 import { selectedSkillsList } from './formCustomDropdown.js';
-import { addEmployee } from './firebase.js';
+import { addEmployee, getNewEmpId } from './firestore.js';
+import { resetAddEmpForm } from './resetAddEmpForm.js';
 import {
     getStorage,
     ref,
@@ -53,21 +54,27 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
     );
 
     formData['skills'] = [...selectedSkillsList];
-    const storage = getStorage();
-    const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
 
-    uploadBytes(
-        storageRef,
-        document.getElementById('profile-photo-input').files[0]
-    )
-        .then((snapshot) => {
-            // console.log('Uploaded a blob or file!');
+    function getPhotoUrl() {
+        const storage = getStorage();
+        const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
+
+        return uploadBytes(
+            storageRef,
+            document.getElementById('profile-photo-input').files[0]
+        ).then((snapshot) => {
             return getDownloadURL(snapshot.ref);
-        })
-        .then((url) => {
-            // console.log(url);
-            formData['profile-photo'] = url;
-            // console.log(JSON.stringify(formData, null, 2));
-            addEmployee(formData);
         });
+    }
+
+    Promise.all([getNewEmpId(), getPhotoUrl()]).then((values) => {
+        formData['empId'] = values[0];
+        formData['profile-photo'] = values[1];
+        console.log(JSON.stringify(formData, null, 2));
+        addEmployee(formData);
+
+        document.getElementById('add-emp-modal').classList.add('display-none');
+        document.getElementById('blur-overlay').classList.add('display-none');
+        resetAddEmpForm();
+    });
 };
