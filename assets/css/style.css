@@ -460,12 +460,29 @@ button {
 .employee-table {
     margin: 20px 0;
     width: 100%;
-    border-collapse: collapse;
-    border-radius: 3px;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 10px;
+    border: 1px solid #000;
+    overflow: hidden;
 
     & th,
     & td {
         padding: 7px 10px;
-        border: 1px solid #000;
+        text-align: left;
     }
+
+    & th {
+        background-color: #d5d5d5;
+    }
+}
+
+th:not(:last-child),
+td:not(:last-child) {
+    border-right: 1px solid #000;
+}
+
+th,
+tr:not(:last-child) > td {
+    border-bottom: 1px solid black;
 }
