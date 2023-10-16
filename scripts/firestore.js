@@ -23,6 +23,7 @@ const db = getFirestore();
 
 const colRef = collection(db, 'employees');
 
+let employees = [];
 onSnapshot(colRef, (snapshot) => {
     const empTable = document.querySelector('.employees-table tbody');
     if (snapshot.docs.length === 0) {
@@ -35,7 +36,6 @@ onSnapshot(colRef, (snapshot) => {
         return;
     }
 
-    let employees = [];
     empTable.innerHTML = '';
     snapshot.docs.forEach((doc) => {
         employees.push({ ...doc.data(), id: doc.id });
@@ -115,4 +115,4 @@ const getNewEmpId = () => {
         });
 };
 
-export { addEmployee, getNewEmpId };
+export { addEmployee, getNewEmpId, employees };

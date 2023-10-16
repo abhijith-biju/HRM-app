@@ -10,6 +10,14 @@
             type="image/x-icon"
         />
 
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
         <!-- google icons  -->
         <link
             rel="stylesheet"
@@ -24,20 +32,25 @@
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
 
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+
         <!-- css  -->
         <link rel="stylesheet" href="assets/css/normalize.css" />
         <link rel="stylesheet" href="assets/css/common.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
-    <body>
+    <body class="flex-container">
         <div id="blur-overlay" class="display-none"></div>
-        <nav>
-            <div class="navbar flex-container margin-inline-auto">
-                <a href="">
+        <header>
+            <nav class="navbar flex-container margin-inline-auto">
+                <a href="" class="brand-logo">
                     <h1>HRM APP</h1>
                 </a>
-            </div>
-        </nav>
+            </nav>
+        </header>
         <main class="margin-inline-auto">
             <div class="table-controls flex-container">
                 <input
@@ -124,11 +137,23 @@
                     </div>
                 </div>
 
-                <button type="button" id="clear-filters-btn">
-                    Clear Filters
+                <button
+                    type="button"
+                    id="clear-filters-btn"
+                    class="btn btn-icon btn-outline"
+                >
+                    <span>Clear Filters</span>
+                    <span class="material-symbols-rounded">
+                        filter_alt_off
+                    </span>
                 </button>
 
-                <button type="button" id="add-emp-btn">
+                <button
+                    type="button"
+                    id="add-emp-btn"
+                    class="btn btn-icon btn-primary"
+                >
+                    <span>Add Employee</span>
                     <span class="material-symbols-rounded"> person_add </span>
                 </button>
             </div>
@@ -253,7 +278,7 @@
                                     id="address"
                                     minlength="3"
                                     maxlength="500"
-                                    rows="2"
+                                    rows="4"
                                     required
                                     spellcheck="false"
                                 ></textarea>
@@ -407,8 +432,15 @@
                         </div>
                     </div>
                     <div class="flex-container form-controls-container">
-                        <button type="button" class="cancel-btn">CANCEL</button>
-                        <button type="submit">SUBMIT</button>
+                        <button
+                            type="button"
+                            class="btn btn-outline cancel-btn"
+                        >
+                            CANCEL
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            SUBMIT
+                        </button>
                     </div>
                 </form>
             </div>
@@ -427,8 +459,16 @@
                 </table>
             </section>
         </main>
+
+        <footer>
+            <span class="copyright-text"
+                >Copyright &#169; 2023 HRM-app.com</span
+            >
+        </footer>
+
         <script type="module" src="scripts/searchCustomDropdown.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
+        <script type="module" src="scripts/tableFilter.js"></script>
         <script type="module" src="scripts/add-emp-modal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>
