@@ -2,6 +2,8 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebas
 import {
     getFirestore,
     collection,
+    query,
+    orderBy,
     getDocs,
     onSnapshot,
     addDoc,
@@ -23,9 +25,10 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const colRef = collection(db, 'employees');
+const q = query(colRef, orderBy('updatedAt', 'desc'));
 
 let employees = [];
-onSnapshot(colRef, (snapshot) => {
+onSnapshot(q, (snapshot) => {
     const empTable = document.querySelector('.employees-table tbody');
     if (snapshot.docs.length === 0) {
         const tableRow = `<tr>
@@ -98,7 +101,7 @@ const addEmployee = async (empObj) => {
     // Add a new document with a generated id.
     const docRef = await addDoc(collection(db, 'employees'), {
         ...empObj,
-        UpdatedAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
     });
     console.log('Document written with ID: ', docRef.id);
 };

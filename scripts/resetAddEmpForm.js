@@ -19,6 +19,8 @@ const resetAddEmpForm = () => {
     formElem.querySelectorAll('.error-msg').forEach((elem) => {
         elem.classList.add('display-hidden');
     });
+
+    formElem.querySelector('button[type=submit]').removeAttribute('value');
 };
 
 export { resetAddEmpForm };

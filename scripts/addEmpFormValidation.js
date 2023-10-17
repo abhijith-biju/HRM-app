@@ -84,9 +84,17 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         formData['empId'] = values[0];
         formData['profilePhoto'] = values[1];
         console.log(JSON.stringify(formData, null, 2));
-        addEmployee(formData);
 
-        document.getElementById('add-emp-modal').classList.add('display-none');
+        const modalBody = document.getElementById('add-emp-modal');
+        const submitBtn = modalBody.querySelector('button[type=submit]');
+        if (submitBtn.value === 'add') {
+            addEmployee(formData);
+        }
+
+        if (submitBtn.value === 'update') {
+        }
+
+        modalBody.classList.add('display-none');
         document.getElementById('blur-overlay').classList.add('display-none');
         resetAddEmpForm();
     });
