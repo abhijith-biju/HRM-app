@@ -37,7 +37,7 @@ document.querySelector(
 
         const liElem = `<li class='skill-chip flex-container'>
             <span>${selectedSkill}</span>
-            <button type="button" class="flex-container  skill-remove-btn" data-value=${selectedSkill}>
+            <button type="button" class="flex-container  skill-remove-btn" data-value='${selectedSkill}'>
             <span class="material-symbols-rounded icon">
                 cancel
             </span>
@@ -56,6 +56,7 @@ document.querySelector('#add-emp-form .selected-skills-list').onclick = (e) => {
     const SkillRemoveBtnElem = e.target.closest('.skill-remove-btn');
     if (SkillRemoveBtnElem) {
         const removedSkill = SkillRemoveBtnElem.getAttribute('data-value');
+
         selectedSkillsList.delete(removedSkill);
 
         document

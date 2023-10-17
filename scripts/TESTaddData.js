@@ -22,18 +22,34 @@
 
 // const employees = [
 //     {
-//         name: 'Alice Johnson',
-//         email: 'alice.johnson@qburst.com',
-//         dob: '1993-07-10',
+//         name: 'Walter White',
+//         email: 'walter.white@qburst.com',
+//         dob: '1973-07-10',
+//         gender: 'male',
+//         address: '789 Elm Avenue, Sometown',
+//         role: 'CFO',
+//         department: 'Finance and Accounts',
+//         doj: '2007-02-15',
+//         location: 'USA',
+//         skills: ['HTML', 'CSS', 'JavaScript'],
+//         empId: 1001,
+//         profilePhoto:
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fbb2401e0-25ff-4c4e-85e0-d8b36a0a1270?alt=media&token=21c81064-6ff1-480a-9bfa-ec3d7bbb70a6',
+//     },
+//     {
+//         name: 'Skylar White',
+//         email: 'skylar.white@qburst.com',
+//         dob: '1978-07-10',
 //         gender: 'female',
 //         address: '789 Elm Avenue, Sometown',
-//         role: 'Senior Engineer',
-//         department: 'Development',
-//         doj: '2022-02-15',
-//         location: 'Kochi',
+//         role: 'Director',
+//         department: 'Finance and Accounts',
+//         doj: '2009-02-15',
+//         location: 'USA',
 //         skills: ['HTML', 'CSS', 'JavaScript'],
-//         empId: 1004,
-//         profilePhoto: 'https://example.com/profile4.jpg',
+//         empId: 1002,
+//         profilePhoto:
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F93244b0f-e684-4bab-8319-d907f763cb49?alt=media&token=76590745-e58d-4aa1-9f6e-d60d931f2c4d',
 //     },
 //     {
 //         name: 'David Wilson',
@@ -48,7 +64,7 @@
 //         skills: ['Project Management', 'JavaScript', 'Figma'],
 //         empId: 1005,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Sarah Johnson',
@@ -63,7 +79,7 @@
 //         skills: ['HTML', 'CSS', 'JavaScript'],
 //         empId: 1006,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Oliver Smith',
@@ -75,10 +91,10 @@
 //         department: 'QA',
 //         doj: '2022-03-15',
 //         location: 'Thiruvananthapuram',
-//         skills: ['QA', 'Python'],
+//         skills: ['Python'],
 //         empId: 1007,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Emma Davis',
@@ -93,7 +109,7 @@
 //         skills: ['ReactJS', 'JavaScript', 'AngularJS'],
 //         empId: 1008,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Liam Johnson',
@@ -108,7 +124,7 @@
 //         skills: ['Client Presentations', 'Management', 'Business Analysis'],
 //         empId: 1009,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Olivia Smith',
@@ -123,7 +139,7 @@
 //         skills: ['JavaScript', 'CSS', 'HTML'],
 //         empId: 1010,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Noah Davis',
@@ -138,7 +154,7 @@
 //         skills: ['ReactJS', 'JavaScript', 'CSS'],
 //         empId: 1011,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Sophia Wilson',
@@ -153,7 +169,7 @@
 //         skills: ['ReactJS', 'JavaScript', 'AngularJS'],
 //         empId: 1012,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 //     {
 //         name: 'Mia Johnson',
@@ -168,7 +184,7 @@
 //         skills: ['JavaScript', 'CSS', 'HTML'],
 //         empId: 1013,
 //         profilePhoto:
-//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2F0e6193a1-ec34-484e-ae56-e31b43883223?alt=media&token=affa9175-c8a0-49b2-b519-fbf29b7d82f1',
+//             'https://firebasestorage.googleapis.com/v0/b/hrm-app-71d9a.appspot.com/o/employees%2Fc8c7339d-284c-414b-b661-f884e5c1d33d?alt=media&token=7c5d3d7c-bd78-4fe4-9ffe-e329fa7cab09',
 //     },
 // ];
 

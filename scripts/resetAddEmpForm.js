@@ -21,6 +21,9 @@ const resetAddEmpForm = () => {
     });
 
     formElem.querySelector('button[type=submit]').removeAttribute('value');
+    formElem
+        .querySelector('button[type=submit]')
+        .removeAttribute('data-doc-id');
 };
 
 export { resetAddEmpForm };

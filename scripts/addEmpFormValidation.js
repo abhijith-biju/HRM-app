@@ -1,5 +1,10 @@
 import { selectedSkillsList } from './formCustomDropdown.js';
-import { addEmployee, getNewEmpId } from './firestore.js';
+import {
+    addEmployee,
+    getNewEmpId,
+    employees,
+    updateEmployee,
+} from './firestore.js';
 import { resetAddEmpForm } from './resetAddEmpForm.js';
 import {
     getStorage,
@@ -80,22 +85,46 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         });
     }
 
-    Promise.all([getNewEmpId(), getPhotoUrl()]).then((values) => {
-        formData['empId'] = values[0];
-        formData['profilePhoto'] = values[1];
-        console.log(JSON.stringify(formData, null, 2));
+    const modalBody = document.getElementById('add-emp-modal');
+    const submitBtn = modalBody.querySelector('button[type=submit]');
 
-        const modalBody = document.getElementById('add-emp-modal');
-        const submitBtn = modalBody.querySelector('button[type=submit]');
-        if (submitBtn.value === 'add') {
+    if (submitBtn.value === 'add') {
+        Promise.all([getNewEmpId(), getPhotoUrl()]).then((values) => {
+            formData['empId'] = values[0];
+            formData['profilePhoto'] = values[1];
+            console.log(JSON.stringify(formData, null, 2));
             addEmployee(formData);
-        }
 
-        if (submitBtn.value === 'update') {
-        }
+            modalBody.classList.add('display-none');
+            document
+                .getElementById('blur-overlay')
+                .classList.add('display-none');
+            resetAddEmpForm();
+        });
+    } else if (submitBtn.value === 'edit') {
+        getPhotoUrl().then((value) => {
+            formData['profilePhoto'] = value;
+            console.log(JSON.stringify(formData, null, 2));
+            updateEmployee(formData, submitBtn.getAttribute('data-doc-id'));
 
-        modalBody.classList.add('display-none');
-        document.getElementById('blur-overlay').classList.add('display-none');
-        resetAddEmpForm();
-    });
+            modalBody.classList.add('display-none');
+            document
+                .getElementById('blur-overlay')
+                .classList.add('display-none');
+            resetAddEmpForm();
+        });
+    }
+
+    // Promise.all([getNewEmpId(), getPhotoUrl()]).then((values) => {
+    //     formData['empId'] = values[0];
+    //     formData['profilePhoto'] = values[1];
+    //     console.log(JSON.stringify(formData, null, 2));
+
+    //     const modalBody = document.getElementById('add-emp-modal');
+    //     const submitBtn = modalBody.querySelector('button[type=submit]');
+
+    //     modalBody.classList.add('display-none');
+    //     document.getElementById('blur-overlay').classList.add('display-none');
+    //     resetAddEmpForm();
+    // });
 };

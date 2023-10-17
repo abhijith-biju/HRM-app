@@ -29,6 +29,8 @@ const q = query(colRef, orderBy('updatedAt', 'desc'));
 
 let employees = [];
 onSnapshot(q, (snapshot) => {
+    employees = [];
+
     const empTable = document.querySelector('.employees-table tbody');
     if (snapshot.docs.length === 0) {
         const tableRow = `<tr>
@@ -106,9 +108,13 @@ const addEmployee = async (empObj) => {
     console.log('Document written with ID: ', docRef.id);
 };
 
-const EmpIdColRef = collection(db, 'empIdCounter');
+const updateEmployee = async (empobj, docId) => {
+    const docRef = doc(db, 'employees', docId);
+    updateDoc(docRef, { ...empobj, updatedAt: serverTimestamp() });
+};
 
 const getNewEmpId = () => {
+    const EmpIdColRef = collection(db, 'empIdCounter');
     return getDocs(EmpIdColRef)
         .then((snapshot) => {
             const currentVal = snapshot.docs[0];
@@ -122,4 +128,4 @@ const getNewEmpId = () => {
         });
 };
 
-export { addEmployee, getNewEmpId, employees, db };
+export { addEmployee, updateEmployee, getNewEmpId, employees, db };
