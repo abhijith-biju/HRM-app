@@ -119,4 +119,4 @@ const getNewEmpId = () => {
         });
 };
 
-export { addEmployee, getNewEmpId, employees };
+export { addEmployee, getNewEmpId, employees, db };

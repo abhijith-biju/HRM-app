@@ -1,26 +1,33 @@
-const fetchData = (path) => {
-    return fetch(path)
-        .then((res) => {
-            return res.json();
+import { db } from './firestore.js';
+import {
+    collection,
+    getDocs,
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+
+const getData = (collectionName) => {
+    const colRef = collection(db, collectionName);
+    return getDocs(colRef)
+        .then((snapshot) => {
+            return snapshot.docs[0].data();
         })
-        .then((data) => data)
-        .catch((msg) => console.log(msg));
+        .catch((err) => {
+            console.log(err.message);
+        });
 };
 
 const loadSkillOptions = async () => {
     let data;
-    await fetchData('./../assets/json/skills.json').then((res) => {
-        data = res;
-    });
+    await getData('skills').then((res) => (data = res));
+
     for (const optionsElem of document
         .querySelectorAll('.select-options')
         .values()) {
         for (const skill of data['skills']) {
             const liElem = `<li>
-                        <button type="button" data-value="${skill['name']}">
-                            ${skill['name']}
-                        </button>
-                    </li>`;
+                                <button type="button" data-value="${skill}">
+                                    ${skill}
+                                </button>
+                            </li>`;
 
             optionsElem.innerHTML += liElem;
         }
@@ -29,9 +36,8 @@ const loadSkillOptions = async () => {
 
 const loadDepartmentOptions = async () => {
     let data;
-    await fetchData('./../assets/json/department.json').then((res) => {
-        data = res;
-    });
+    await getData('department').then((res) => (data = res));
+
     for (const selectElem of document
         .querySelectorAll('.dept-select')
         .values()) {
@@ -44,13 +50,12 @@ const loadDepartmentOptions = async () => {
 
 const loadRoleOptions = async () => {
     let data;
-    await fetchData('./../assets/json/roles.json').then((res) => {
-        data = res;
-    });
+    await getData('role').then((res) => (data = res));
+
     for (const selectElem of document
         .querySelectorAll('.role-select')
         .values()) {
-        for (const role of data['roles']) {
+        for (const role of data['role']) {
             const optionElem = `<option value="${role}">${role}</option>`;
             selectElem.innerHTML += optionElem;
         }
@@ -59,9 +64,8 @@ const loadRoleOptions = async () => {
 
 const loadLocationOptions = async () => {
     let data;
-    await fetchData('./../assets/json/location.json').then((res) => {
-        data = res;
-    });
+    await getData('location').then((res) => (data = res));
+
     for (const selectElem of document
         .querySelectorAll('.location-select')
         .values()) {
