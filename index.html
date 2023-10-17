@@ -64,12 +64,13 @@
                     <select
                         name="dept-search"
                         id="dept-search"
+                        class="dept-select"
                         autocomplete="off"
                     >
                         <option value="all" selected>All</option>
-                        <option value="backend">Backend</option>
+                        <!-- <option value="backend">Backend</option>
                         <option value="qa">QA</option>
-                        <option value="frontend">Frontend</option>
+                        <option value="frontend">Frontend</option> -->
                     </select>
                 </div>
 
@@ -78,19 +79,10 @@
                     <select
                         name="role-search"
                         id="role-search"
+                        class="role-select"
                         autocomplete="off"
                     >
                         <option value="all" selected>All</option>
-                        <option value="developer">Developer</option>
-                        <option value="intern">Intern</option>
-                        <option value="senior-developer">
-                            Senior Developer
-                        </option>
-                        <option value="manager">Manager</option>
-                        <option value="director">Director</option>
-                        <option value="director">
-                            Senior DeveloperSenior Developer
-                        </option>
                     </select>
                 </div>
 
@@ -100,33 +92,7 @@
                             type="text"
                             placeholder="Add one or more skills"
                         />
-                        <ul class="select-options display-none">
-                            <li>
-                                <button type="button" data-value="HTML">
-                                    HTML
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="CSS">
-                                    CSS
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="JavaScript">
-                                    JavaScript
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="ReactJS">
-                                    ReactJS
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="AngularJS">
-                                    AngularJS
-                                </button>
-                            </li>
-                        </ul>
+                        <ul class="select-options display-none"></ul>
                     </div>
                     <div class="selected-skills-container">
                         <div class="skill-label display-none" tabindex="0">
@@ -176,7 +142,6 @@
                             <input
                                 type="file"
                                 id="profile-photo-input"
-                                name="profile-photo"
                                 accept="image/*"
                                 class="display-none"
                                 required
@@ -277,7 +242,7 @@
                                     name="address"
                                     id="address"
                                     minlength="3"
-                                    maxlength="500"
+                                    maxlength="250"
                                     rows="4"
                                     required
                                     spellcheck="false"
@@ -293,17 +258,15 @@
                                 <label for="company-role" class="required-field"
                                     >Role</label
                                 >
-                                <select name="role" id="company-role" required>
+                                <select
+                                    name="role"
+                                    id="company-role"
+                                    class="role-select"
+                                    required
+                                >
                                     <option value="" disabled selected>
                                         Select a role
                                     </option>
-                                    <option value="developer">Developer</option>
-                                    <option value="intern">Intern</option>
-                                    <option value="senior-developer">
-                                        Senior Developer
-                                    </option>
-                                    <option value="manager">Manager</option>
-                                    <option value="director">Director</option>
                                 </select>
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -315,6 +278,7 @@
                                 <select
                                     name="department"
                                     id="company-dept"
+                                    class="dept-select"
                                     required
                                 >
                                     <option value="" disabled selected>
@@ -352,6 +316,7 @@
                                 <select
                                     name="location"
                                     id="company-location"
+                                    class="location-select"
                                     required
                                 >
                                     <option value="" disabled selected>
@@ -380,48 +345,9 @@
                                             placeholder="Add one or more skills"
                                             class="skill-search-input"
                                         />
-                                        <ul class="select-options display-none">
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="HTML"
-                                                >
-                                                    HTML
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="CSS"
-                                                >
-                                                    CSS
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="JavaScript"
-                                                >
-                                                    JavaScript
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="ReactJS"
-                                                >
-                                                    ReactJS
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="AngularJS"
-                                                >
-                                                    AngularJS
-                                                </button>
-                                            </li>
-                                        </ul>
+                                        <ul
+                                            class="select-options display-none"
+                                        ></ul>
                                     </div>
                                     <ul
                                         class="selected-skills-list flex-container"
@@ -466,9 +392,9 @@
             >
         </footer>
 
+        <script type="module" src="scripts/loadSelectOptions.js"></script>
         <script type="module" src="scripts/searchCustomDropdown.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
-        <script type="module" src="scripts/tableFilter.js"></script>
         <script type="module" src="scripts/add-emp-modal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>

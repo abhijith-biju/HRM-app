@@ -198,7 +198,7 @@ button {
 
 .custom-select-wrap {
     position: relative;
-    max-width: 200px;
+    max-width: 250px;
 
     & input[type='text'] {
         height: 25px;
@@ -233,7 +233,8 @@ button {
         border: 1px solid #b5b5b5;
         border-radius: 5px;
         z-index: 4;
-        max-height: 82px;
+        /* max-height: 82px; */
+        max-height: 200px;
         overflow: auto;
         list-style: none;
         /* padding: 3px 0; */

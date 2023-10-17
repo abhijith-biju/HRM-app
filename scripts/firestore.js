@@ -7,6 +7,7 @@ import {
     addDoc,
     updateDoc,
     doc,
+    serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -95,7 +96,10 @@ onSnapshot(colRef, (snapshot) => {
 
 const addEmployee = async (empObj) => {
     // Add a new document with a generated id.
-    const docRef = await addDoc(collection(db, 'employees'), empObj);
+    const docRef = await addDoc(collection(db, 'employees'), {
+        ...empObj,
+        UpdatedAt: serverTimestamp(),
+    });
     console.log('Document written with ID: ', docRef.id);
 };
 

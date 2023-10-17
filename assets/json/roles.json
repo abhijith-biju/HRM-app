@@ -1,0 +1,12 @@
+{
+    "roles": [
+        "Intern",
+        "Engineer",
+        "Senior Engineer",
+        "Architect",
+        "Director",
+        "CFO",
+        "CEO",
+        "CTO"
+    ]
+}

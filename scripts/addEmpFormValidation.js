@@ -26,6 +26,19 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
             return false;
         }
 
+        if (
+            (inputElem.type === 'text' || inputElem.type === 'textarea') &&
+            inputElem.value.trim().length === 0
+        ) {
+            const errorMsgContainer = inputElem
+                .closest('.form-entry')
+                .querySelector('.error-msg');
+
+            errorMsgContainer.innerHTML = 'Please fill out this field.';
+            errorMsgContainer.classList.remove('display-hidden');
+            return false;
+        }
+
         return true;
     };
 
@@ -69,7 +82,7 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
 
     Promise.all([getNewEmpId(), getPhotoUrl()]).then((values) => {
         formData['empId'] = values[0];
-        formData['profile-photo'] = values[1];
+        formData['profilePhoto'] = values[1];
         console.log(JSON.stringify(formData, null, 2));
         addEmployee(formData);
 
