@@ -78,6 +78,28 @@ input[type='radio'] {
     accent-color: #000;
 }
 
+dialog {
+    border: none;
+    border-radius: 5px;
+    padding: 25px 20px;
+
+    &::backdrop {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(2.5px);
+    }
+
+    & .confirm-dialog-msg {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    & .confirm-dialog-actions {
+        gap: 10px;
+        justify-content: right;
+    }
+}
+
 /* fieldset {
     border: none;
     padding: 0;

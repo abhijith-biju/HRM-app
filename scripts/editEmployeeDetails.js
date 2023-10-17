@@ -1,4 +1,4 @@
-import { addEmpModalDisplay } from './add-emp-modal.js';
+import { addEmpModalDisplay } from './addEmployeeModal.js';
 import { employees } from './firestore.js';
 import { selectedSkillsList } from './formCustomDropdown.js';
 

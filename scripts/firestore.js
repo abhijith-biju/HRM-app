@@ -8,6 +8,7 @@ import {
     onSnapshot,
     addDoc,
     updateDoc,
+    deleteDoc,
     doc,
     serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
@@ -108,9 +109,14 @@ const addEmployee = async (empObj) => {
     console.log('Document written with ID: ', docRef.id);
 };
 
-const updateEmployee = async (empobj, docId) => {
+const updateEmployee = async (empObj, docId) => {
     const docRef = doc(db, 'employees', docId);
-    updateDoc(docRef, { ...empobj, updatedAt: serverTimestamp() });
+    await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
+};
+
+const deleteEmployee = async (docId) => {
+    const docRef = doc(db, 'employees', docId);
+    await deleteDoc(docRef);
 };
 
 const getNewEmpId = () => {
@@ -128,4 +134,11 @@ const getNewEmpId = () => {
         });
 };
 
-export { addEmployee, updateEmployee, getNewEmpId, employees, db };
+export {
+    addEmployee,
+    updateEmployee,
+    deleteEmployee,
+    getNewEmpId,
+    employees,
+    db,
+};
