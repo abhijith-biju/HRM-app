@@ -1,12 +1,12 @@
 import { deleteEmployee } from './firestore.js';
 
-document.querySelector('.employees-table').onclick = function (e) {
+document.querySelector('.employees-table').addEventListener('click', (e) => {
     if (e.target.closest('button')?.classList.contains('delete-emp-btn')) {
         deleteEmployeeDetails(
             e.target.closest('.employee-actions').getAttribute('data-emp-id')
         );
     }
-};
+});
 
 const deleteEmployeeDetails = (docId) => {
     const confirmDialog = document.querySelector('.confirm-dialog');

@@ -2,13 +2,13 @@ import { addEmpModalDisplay } from './addEmployeeModal.js';
 import { employees } from './firestore.js';
 import { selectedSkillsList } from './formCustomDropdown.js';
 
-document.querySelector('.employees-table').onclick = function (e) {
+document.querySelector('.employees-table').addEventListener('click', (e) => {
     if (e.target.closest('button')?.classList.contains('edit-emp-btn')) {
         editEmployeeDetails(
             e.target.closest('.employee-actions').getAttribute('data-emp-id')
         );
     }
-};
+});
 
 const editEmployeeDetails = (docId) => {
     const employee = employees.find((employee) => employee['id'] === docId);
