@@ -59,7 +59,7 @@
                     placeholder="Search By Employee Name"
                 />
 
-                <div>
+                <div class="display-none">
                     <label for="dept-search">Department</label>
                     <select
                         name="dept-search"
@@ -71,7 +71,7 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="display-none">
                     <label for="role-search">Role</label>
                     <select
                         name="role-search"
@@ -366,9 +366,9 @@
                     <thead>
                         <th>Employee ID</th>
                         <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Department</th>
+                        <th>Skills</th>
+                        <!-- <th>Role</th> -->
+                        <!-- <th>Department</th> -->
                         <th>Actions</th>
                     </thead>
                     <tbody></tbody>
@@ -392,9 +392,15 @@
             >
         </footer>
         <!-- <script type="module" src="scripts/TESTaddData.js"></script> -->
+        <script type="module" src="scripts/employeeTableDisplay.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
         <script type="module" src="scripts/loadSelectOptions.js"></script>
         <script type="module" src="scripts/searchCustomDropdown.js"></script>
+        <script type="module" src="scripts/tableFilter.js"></script>
+        <script type="module" src="scripts/clearFilters.js"></script>
+        <script type="module" src="scripts/editEmployeeDetails.js"></script>
+        <script type="module" src="scripts/confirmDialog.js"></script>
+        <script type="module" src="scripts/deleteEmployee.js"></script>
         <script type="module" src="scripts/addEmployeeModal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>
@@ -402,10 +408,6 @@
         <script type="module" src="scripts/addEmployeeCancel.js"></script>
         <script type="module" src="scripts/addEmpFormValidation.js"></script>
         <!-- <script src="scripts/checkInputValidity.js"></script> -->
-        <script type="module" src="scripts/clearFilters.js"></script>
         <script type="module" src="scripts/resetAddEmpForm.js"></script>
-        <script type="module" src="scripts/editEmployeeDetails.js"></script>
-        <script type="module" src="scripts/confirmDialog.js"></script>
-        <script type="module" src="scripts/deleteEmployee.js"></script>
     </body>
 </html>

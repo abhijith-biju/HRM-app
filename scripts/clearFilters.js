@@ -1,4 +1,5 @@
 import { selectedSkillsForSearch } from './searchCustomDropdown.js';
+import { tableFilter } from './tableFilter.js';
 
 document.getElementById('clear-filters-btn').onclick = () => {
     const tableControlsElem = document.querySelector('.table-controls');
@@ -30,4 +31,6 @@ document.getElementById('clear-filters-btn').onclick = () => {
     selectedSkillsContainer.querySelector('.selected-skills-list').innerHTML =
         '';
     selectedSkillsForSearch.clear();
+
+    tableFilter();
 };

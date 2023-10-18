@@ -12,6 +12,7 @@ import {
     doc,
     serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
+import { tableFilter } from './tableFilter.js';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCA7aaXgARdDjMXAjCzxBGkmVKxwXKuBZA',
@@ -32,71 +33,72 @@ let employees = [];
 onSnapshot(q, (snapshot) => {
     employees = [];
 
-    const empTable = document.querySelector('.employees-table tbody');
-    if (snapshot.docs.length === 0) {
-        const tableRow = `<tr>
-            <td colspan="6" class="text-center">
-                No data to be displayed
-            </td>
-        </tr>`;
-        empTable.innerHTML = tableRow;
-        return;
-    }
+    // const empTable = document.querySelector('.employees-table tbody');
+    // if (snapshot.docs.length === 0) {
+    //     const tableRow = `<tr>
+    //         <td colspan="6" class="text-center">
+    //             No data to be displayed
+    //         </td>
+    //     </tr>`;
+    //     empTable.innerHTML = tableRow;
+    //     return;
+    // }
 
-    empTable.innerHTML = '';
+    // empTable.innerHTML = '';
     snapshot.docs.forEach((doc) => {
         employees.push({ ...doc.data(), id: doc.id });
-        const tableRow = `<tr>
-            <td>${doc.data().empId}</td>
-            <td>${doc.data().name}</td>
-            <td>${doc.data().email}</td>
-            <td>${doc.data().role}</td>
-            <td>${doc.data().department}</td>
-            <td>
-                <ul class="employee-actions flex-container" data-emp-id = ${
-                    doc.id
-                }>
-                    <li>
-                        <button
-                            type="button"
-                            class="view-emp-btn flex-container"
-                        >
-                            <span
-                                class="material-symbols-rounded"
-                            >
-                                visibility
-                            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            type="button"
-                            class="edit-emp-btn flex-container"
-                        >
-                            <span
-                                class="material-symbols-rounded"
-                            >
-                                edit_square
-                            </span>
-                        </button>
-                    </li>
-                    <li>
-                        <button
-                            type="button"
-                            class="delete-emp-btn flex-container"
-                        >
-                            <span
-                                class="material-symbols-rounded"
-                            >
-                                delete
-                            </span>
-                        </button>
-                    </li>
-                </ul>
-            </td>
-        </tr>`;
-        empTable.innerHTML += tableRow;
+        // const tableRow = `<tr>
+        //     <td>${doc.data().empId}</td>
+        //     <td>${doc.data().name}</td>
+        //     <td>${doc.data().email}</td>
+        //     <td>${doc.data().role}</td>
+        //     <td>${doc.data().department}</td>
+        //     <td>
+        //         <ul class="employee-actions flex-container" data-emp-id = ${
+        //             doc.id
+        //         }>
+        //             <li>
+        //                 <button
+        //                     type="button"
+        //                     class="view-emp-btn flex-container"
+        //                 >
+        //                     <span
+        //                         class="material-symbols-rounded"
+        //                     >
+        //                         visibility
+        //                     </span>
+        //                 </button>
+        //             </li>
+        //             <li>
+        //                 <button
+        //                     type="button"
+        //                     class="edit-emp-btn flex-container"
+        //                 >
+        //                     <span
+        //                         class="material-symbols-rounded"
+        //                     >
+        //                         edit_square
+        //                     </span>
+        //                 </button>
+        //             </li>
+        //             <li>
+        //                 <button
+        //                     type="button"
+        //                     class="delete-emp-btn flex-container"
+        //                 >
+        //                     <span
+        //                         class="material-symbols-rounded"
+        //                     >
+        //                         delete
+        //                     </span>
+        //                 </button>
+        //             </li>
+        //         </ul>
+        //     </td>
+        // </tr>`;
+        // empTable.innerHTML += tableRow;
     });
+    tableFilter();
     console.log(employees);
 });
 

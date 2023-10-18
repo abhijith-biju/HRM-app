@@ -1,4 +1,5 @@
-'use strict';
+import { employeeTableDisplay } from './employeeTableDisplay.js';
+import { tableFilter } from './tableFilter.js';
 
 const selectedSkillsForSearch = new Set();
 
@@ -60,13 +61,16 @@ document.querySelector(
 
         const liElem = `<li class='skill-chip flex-container'>
             <span>${selectedSkill}</span>
-            <button type="button" class="flex-container  skill-remove-btn" data-value=${selectedSkill}>
+            <button type="button" class="flex-container  skill-remove-btn" data-value='${selectedSkill}'>
             <span class="material-symbols-rounded icon">
                 cancel
             </span>
         </button>
         </li>`;
         selectedSkillsList.innerHTML += liElem;
+
+        // employeeTableDisplay();
+        tableFilter();
     }
 
     document
@@ -106,6 +110,9 @@ document.querySelector('.table-controls .selected-skills-list').onclick = (
         selectedSkillsList.removeChild(
             SkillRemoveBtnElem.closest('.skill-chip')
         );
+
+        // employeeTableDisplay();
+        tableFilter();
     }
 
     document
