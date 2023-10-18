@@ -2,8 +2,8 @@
     height: 100%;
     --max-width: 1440px;
     --primary-font: 'Roboto', sans-serif;
-    --primary-clr: #0063ff;
-    --primary-clr-accent: #0f59eb;
+    --primary-clr: #007af5;
+    --primary-clr-accent: #0066cc;
     --gray-clr: #bdbdbd;
 }
 
@@ -99,18 +99,6 @@ dialog {
         justify-content: right;
     }
 }
-
-/* fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-    min-width: 0;
-
-    & legend {
-        padding: 0;
-        display: table;
-    }
-} */
 
 #blur-overlay {
     cursor: pointer;
@@ -530,6 +518,30 @@ button {
     }
 }
 
+.employees-table .emp-name-heading {
+    /* background-color: yellow; */
+    align-items: center;
+    gap: 3px;
+
+    & .sort-btn {
+        /* background-color: teal; */
+        padding: 0;
+
+        &.desc {
+            transform: rotateX(180deg);
+        }
+
+        & span {
+            font-size: 30px;
+        }
+
+        &:hover span {
+            transform: scale(1.1);
+            font-variation-settings: 'wght' 450;
+        }
+    }
+}
+
 /* .employees-table th:not(:last-child),
 .employees-table td:not(:last-child) {
     border-right: 1px solid #000;
@@ -583,7 +595,8 @@ button {
     padding: 0;
 
     & .main-details {
-        background-color: var(--gray-clr);
+        background-color: var(--primary-clr);
+        color: #fff;
         width: 350px;
         padding: 30px 20px;
         text-align: center;
@@ -601,33 +614,26 @@ button {
     }
 
     & .profile-photo {
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 200px;
         border-radius: 50%;
+        border: 5px solid #fff;
         margin-inline: auto;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         object-fit: cover;
     }
 
     & .full-name {
         font-size: 2em;
         font-weight: 500;
-        margin: 20px 0 10px;
+        margin: 0 0 10px 0;
     }
 
-    & .role {
-        font-size: 1.2em;
-        margin: 2px 0;
-    }
-
-    & .department {
-        font-size: 1.2em;
-        margin: 2px 0;
-    }
-
+    & .role,
+    & .department,
     & .location {
         font-size: 1.2em;
-        margin: 2px 0;
+        margin: 0 0 4px 0;
     }
 
     & dl {
@@ -635,12 +641,12 @@ button {
     }
 
     & .data-entry {
-        margin-bottom: 10px;
+        margin-bottom: 17px;
     }
 
     & dt,
     & dd {
-        display: inline;
+        display: block;
         margin: 0;
     }
 
@@ -648,14 +654,15 @@ button {
         font-size: 1em;
         font-weight: 500;
 
-        &::after {
+        /* &::after {
             content: ' :';
             margin-right: 5px;
-        }
+        } */
     }
 
     & dd {
         font-size: 1.2em;
+        font-weight: 300;
         color: rgb(43, 42, 42);
     }
 
@@ -665,8 +672,20 @@ button {
 
     & .confirm-no-btn {
         position: absolute;
-        bottom: 10px;
+        top: 10px;
         right: 10px;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        background-color: transparent;
+
+        &:hover {
+            background-color: var(--primary-clr);
+
+            & span {
+                color: #fff;
+            }
+        }
     }
 }
 

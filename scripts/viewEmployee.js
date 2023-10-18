@@ -17,6 +17,7 @@ const viewEmployeeDetails = (docId) => {
     dialogElem.querySelector('.full-name').innerHTML = employee['name'];
     dialogElem.querySelector('.department').innerHTML = employee['department'];
     dialogElem.querySelector('.role').innerHTML = employee['role'];
+    dialogElem.querySelector('.location').innerHTML = employee['location'];
     dialogElem.querySelector('.emp-id').innerHTML = employee['empId'];
     dialogElem.querySelector('.email').innerHTML = employee['email'];
     dialogElem.querySelector('.gender').innerHTML = employee['gender'];

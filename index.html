@@ -23,19 +23,6 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
 
         <!-- css  -->
         <link rel="stylesheet" href="assets/css/normalize.css" />
@@ -365,8 +352,19 @@
                 <table class="employees-table">
                     <thead>
                         <th>Employee ID</th>
-                        <th>Name</th>
-                        <th>Skills</th>
+                        <th class="emp-name-heading flex-container">
+                            <span>Name</span>
+                            <button
+                                class="sort-btn"
+                                data-value="name"
+                                data-sort-order="asc"
+                            >
+                                <span class="material-symbols-rounded">
+                                    arrow_upward_alt
+                                </span>
+                            </button>
+                        </th>
+                        <th>Email</th>
                         <th>Role</th>
                         <th>Department</th>
                         <th>Actions</th>
@@ -394,40 +392,36 @@
                             class="profile-photo"
                             draggable="false"
                         />
-                        <p class="full-name">Abhijith B</p>
-                        <p class="role">Intern</p>
-                        <p class="department">Development</p>
-                        <p class="location">Trivandrum</p>
+                        <p class="full-name"></p>
+                        <p class="role"></p>
+                        <p class="department"></p>
+                        <p class="location"></p>
                     </div>
                     <div class="extended-details">
                         <dl>
                             <div class="data-entry">
                                 <dt>Employee ID</dt>
-                                <dd class="emp-id">1001</dd>
+                                <dd class="emp-id"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Email</dt>
-                                <dd class="email">abhijith@qburst.com</dd>
+                                <dd class="email"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Gender</dt>
-                                <dd class="gender">male</dd>
+                                <dd class="gender"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Date of Birth</dt>
-                                <dd class="dob">01-01-2001</dd>
+                                <dd class="dob"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Date of Joining</dt>
-                                <dd class="doj">11-07-2023</dd>
+                                <dd class="doj"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Address</dt>
-                                <dd class="address">
-                                    8D, Block B, Sreedhanya Homes, Trivandrum
-                                    8D, Block B, Sreedhanya Homes, Trivandrum
-                                    8D, Block B, Sreedhanya Homes, Trivandrum
-                                </dd>
+                                <dd class="address"></dd>
                             </div>
                             <div class="data-entry">
                                 <dt>Skills</dt>
@@ -440,8 +434,14 @@
                         </dl>
                     </div>
                 </div>
-                <button class="btn btn-primary confirm-no-btn">Close</button>
+                <button class="btn btn-primary confirm-no-btn">
+                    <span class="material-symbols-rounded"> close </span>
+                </button>
             </dialog>
+
+            <div class="toast">
+                <p class="toast-msg"></p>
+            </div>
         </main>
 
         <footer>
