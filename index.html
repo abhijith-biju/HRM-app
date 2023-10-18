@@ -367,8 +367,8 @@
                         <th>Employee ID</th>
                         <th>Name</th>
                         <th>Skills</th>
-                        <!-- <th>Role</th> -->
-                        <!-- <th>Department</th> -->
+                        <th>Role</th>
+                        <th>Department</th>
                         <th>Actions</th>
                     </thead>
                     <tbody></tbody>
@@ -383,6 +383,64 @@
                         Cancel
                     </button>
                 </div>
+            </dialog>
+
+            <dialog class="view-emp-dialog">
+                <div class="details flex-container">
+                    <div class="main-details">
+                        <img
+                            src="assets/images/employee-avatar.svg"
+                            alt="profile photo"
+                            class="profile-photo"
+                            draggable="false"
+                        />
+                        <p class="full-name">Abhijith B</p>
+                        <p class="role">Intern</p>
+                        <p class="department">Development</p>
+                        <p class="location">Trivandrum</p>
+                    </div>
+                    <div class="extended-details">
+                        <dl>
+                            <div class="data-entry">
+                                <dt>Employee ID</dt>
+                                <dd class="emp-id">1001</dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Email</dt>
+                                <dd class="email">abhijith@qburst.com</dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Gender</dt>
+                                <dd class="gender">male</dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Date of Birth</dt>
+                                <dd class="dob">01-01-2001</dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Date of Joining</dt>
+                                <dd class="doj">11-07-2023</dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Address</dt>
+                                <dd class="address">
+                                    8D, Block B, Sreedhanya Homes, Trivandrum
+                                    8D, Block B, Sreedhanya Homes, Trivandrum
+                                    8D, Block B, Sreedhanya Homes, Trivandrum
+                                </dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Skills</dt>
+                                <dd>
+                                    <ul
+                                        class="selected-skills-list flex-container"
+                                    ></ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <button class="btn btn-primary confirm-no-btn">Close</button>
             </dialog>
         </main>
 
@@ -401,6 +459,7 @@
         <script type="module" src="scripts/editEmployeeDetails.js"></script>
         <script type="module" src="scripts/confirmDialog.js"></script>
         <script type="module" src="scripts/deleteEmployee.js"></script>
+        <script type="module" src="scripts/viewEmployee.js"></script>
         <script type="module" src="scripts/addEmployeeModal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>

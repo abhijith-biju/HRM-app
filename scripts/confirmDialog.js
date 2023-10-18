@@ -1,19 +1,21 @@
-const dialog = document.querySelector('.confirm-dialog');
+const dialogElemList = document.querySelectorAll('dialog');
 
-dialog.addEventListener('click', (e) => {
-    const dialogDimensions = dialog.getBoundingClientRect();
-    if (
-        e.clientX < dialogDimensions.left ||
-        e.clientX > dialogDimensions.right ||
-        e.clientY < dialogDimensions.top ||
-        e.clientY > dialogDimensions.bottom
-    ) {
-        dialog.close();
-    }
-});
+dialogElemList.forEach((dialogElem) => {
+    dialogElem.addEventListener('click', (e) => {
+        const dialogDimensions = dialogElem.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            dialogElem.close();
+        }
+    });
 
-// Handle No button click
-dialog.querySelector('.confirm-no-btn').addEventListener('click', () => {
-    // console.log('User clicked No or closed the dialog');
-    dialog.close();
+    dialogElem
+        .querySelector('.confirm-no-btn')
+        .addEventListener('click', () => {
+            dialogElem.close();
+        });
 });

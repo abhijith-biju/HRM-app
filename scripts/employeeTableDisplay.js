@@ -16,7 +16,9 @@ const employeeTableDisplay = (employeesList) => {
         const tableRow = `<tr>
             <td>${employee.empId}</td>
             <td>${employee.name}</td>
-            <td>${employee.skills}</td>
+            <td>${employee.email}</td>
+            <td>${employee.role}</td>
+            <td>${employee.department}</td>
             <td>
                 <ul class="employee-actions flex-container" data-emp-id = ${employee.id}>
                     <li>

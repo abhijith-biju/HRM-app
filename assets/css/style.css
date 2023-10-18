@@ -578,6 +578,98 @@ button {
     }
 }
 
+.view-emp-dialog {
+    position: relative;
+    padding: 0;
+
+    & .main-details {
+        background-color: var(--gray-clr);
+        width: 350px;
+        padding: 30px 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    & .extended-details {
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 450px;
+    }
+
+    & .profile-photo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        margin-inline: auto;
+        margin-bottom: 10px;
+        object-fit: cover;
+    }
+
+    & .full-name {
+        font-size: 2em;
+        font-weight: 500;
+        margin: 20px 0 10px;
+    }
+
+    & .role {
+        font-size: 1.2em;
+        margin: 2px 0;
+    }
+
+    & .department {
+        font-size: 1.2em;
+        margin: 2px 0;
+    }
+
+    & .location {
+        font-size: 1.2em;
+        margin: 2px 0;
+    }
+
+    & dl {
+        margin: 0;
+    }
+
+    & .data-entry {
+        margin-bottom: 10px;
+    }
+
+    & dt,
+    & dd {
+        display: inline;
+        margin: 0;
+    }
+
+    & dt {
+        font-size: 1em;
+        font-weight: 500;
+
+        &::after {
+            content: ' :';
+            margin-right: 5px;
+        }
+    }
+
+    & dd {
+        font-size: 1.2em;
+        color: rgb(43, 42, 42);
+    }
+
+    & .selected-skills-list {
+        margin: 5px 0 0 0;
+    }
+
+    & .confirm-no-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
 footer {
     margin-top: auto;
     text-align: center;
