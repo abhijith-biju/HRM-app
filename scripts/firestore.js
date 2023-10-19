@@ -1,3 +1,4 @@
+import { displayToast } from './toast.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
 import {
     getFirestore,
@@ -41,23 +42,41 @@ onSnapshot(colRef, (snapshot) => {
 });
 
 const addEmployee = async (empObj) => {
-    // const docRef = await addDoc(collection(db, 'employees'), {
-    //     ...empObj,
-    //     updatedAt: serverTimestamp(),
-    // });
-    const docRef = await addDoc(collection(db, 'employees'), empObj);
-    console.log('Document written with ID: ', docRef.id);
+    try {
+        // const docRef = await addDoc(collection(db, 'employees'), {
+        //     ...empObj,
+        //     updatedAt: serverTimestamp(),
+        // });
+        const docRef = await addDoc(collection(db, 'employees'), empObj);
+        console.log('Document written with ID: ', docRef.id);
+        displayToast('success', 'Added employee details.');
+    } catch (err) {
+        displayToast('error', `Couldn't add employee details.`);
+        console.log(err);
+    }
 };
 
 const updateEmployee = async (empObj, docId) => {
-    const docRef = doc(db, 'employees', docId);
-    // await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
-    await updateDoc(docRef, empObj);
+    try {
+        const docRef = doc(db, 'employees', docId);
+        // await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
+        await updateDoc(docRef, empObj);
+        displayToast('success', 'Updated employee details.');
+    } catch (err) {
+        displayToast('error', `Couldn't update employee details.`);
+        console.log(err);
+    }
 };
 
 const deleteEmployee = async (docId) => {
-    const docRef = doc(db, 'employees', docId);
-    await deleteDoc(docRef);
+    try {
+        const docRef = doc(db, 'employees', docId);
+        await deleteDoc(docRef);
+        displayToast('success', 'Deleted employee details.');
+    } catch (err) {
+        displayToast('error', `Couldn't delete employee details.`);
+        console.log(err);
+    }
 };
 
 const getNewEmpId = () => {

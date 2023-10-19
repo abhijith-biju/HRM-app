@@ -72,10 +72,7 @@
 
                 <div class="skills-input-container flex-container">
                     <div class="custom-select-wrap margin-inline-auto">
-                        <input
-                            type="text"
-                            placeholder="Add one or more skills"
-                        />
+                        <input type="text" placeholder="Filter by skills" />
                         <ul class="select-options display-none"></ul>
                     </div>
                     <div class="selected-skills-container">
@@ -442,10 +439,29 @@
             </dialog>
 
             <div class="toast">
-                <span class="toast-msg"
-                    >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatibus, animi!</span
-                >
+                <div class="toast-content flex-container">
+                    <span
+                        class="material-symbols-rounded toast-status-icon success-icon display-none"
+                    >
+                        check_circle
+                    </span>
+                    <span
+                        class="material-symbols-rounded toast-status-icon error-icon display-none"
+                    >
+                        error
+                    </span>
+                    <div class="toast-msg-body flex-container">
+                        <span class="toast-status">Success</span>
+                        <span class="toast-info"
+                            >Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptatibus, animi!</span
+                        >
+                    </div>
+                </div>
+                <span class="material-symbols-rounded toast-close-icon">
+                    close
+                </span>
+                <div class="progress"></div>
             </div>
         </main>
 
@@ -472,5 +488,6 @@
         <script type="module" src="scripts/addEmpFormValidation.js"></script>
         <!-- <script src="scripts/checkInputValidity.js"></script> -->
         <script type="module" src="scripts/resetAddEmpForm.js"></script>
+        <script type="module" src="scripts/toast.js"></script>
     </body>
 </html>
