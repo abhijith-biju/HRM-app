@@ -524,7 +524,6 @@ button {
     gap: 3px;
 
     & .sort-btn {
-        /* background-color: teal; */
         padding: 0;
 
         &.desc {
@@ -533,6 +532,7 @@ button {
 
         & span {
             font-size: 30px;
+            display: block;
         }
 
         &:hover span {

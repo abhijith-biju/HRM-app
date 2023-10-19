@@ -55,7 +55,7 @@ const sortList = (employeesList) => {
             .getAttribute('data-sort-order') === 'asc'
     ) {
         employeesList.sort((obj1, obj2) => {
-            if (obj1['name'] > obj2['name']) {
+            if (obj1['name'].toLowerCase() > obj2['name'].toLowerCase()) {
                 return 1;
             } else if (obj1['name'] < obj2['name']) {
                 return -1;
@@ -65,7 +65,7 @@ const sortList = (employeesList) => {
         });
     } else {
         employeesList.sort((obj1, obj2) => {
-            if (obj1['name'] < obj2['name']) {
+            if (obj1['name'].toLowerCase() < obj2['name'].toLowerCase()) {
                 return 1;
             } else if (obj1['name'] > obj2['name']) {
                 return -1;
