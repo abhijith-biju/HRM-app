@@ -27,93 +27,32 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const colRef = collection(db, 'employees');
-const q = query(colRef, orderBy('updatedAt', 'desc'));
+// const q = query(colRef, orderBy('updatedAt', 'desc'));
 
 let employees = [];
-onSnapshot(q, (snapshot) => {
+onSnapshot(colRef, (snapshot) => {
     employees = [];
 
-    // const empTable = document.querySelector('.employees-table tbody');
-    // if (snapshot.docs.length === 0) {
-    //     const tableRow = `<tr>
-    //         <td colspan="6" class="text-center">
-    //             No data to be displayed
-    //         </td>
-    //     </tr>`;
-    //     empTable.innerHTML = tableRow;
-    //     return;
-    // }
-
-    // empTable.innerHTML = '';
     snapshot.docs.forEach((doc) => {
         employees.push({ ...doc.data(), id: doc.id });
-        // const tableRow = `<tr>
-        //     <td>${doc.data().empId}</td>
-        //     <td>${doc.data().name}</td>
-        //     <td>${doc.data().email}</td>
-        //     <td>${doc.data().role}</td>
-        //     <td>${doc.data().department}</td>
-        //     <td>
-        //         <ul class="employee-actions flex-container" data-emp-id = ${
-        //             doc.id
-        //         }>
-        //             <li>
-        //                 <button
-        //                     type="button"
-        //                     class="view-emp-btn flex-container"
-        //                 >
-        //                     <span
-        //                         class="material-symbols-rounded"
-        //                     >
-        //                         visibility
-        //                     </span>
-        //                 </button>
-        //             </li>
-        //             <li>
-        //                 <button
-        //                     type="button"
-        //                     class="edit-emp-btn flex-container"
-        //                 >
-        //                     <span
-        //                         class="material-symbols-rounded"
-        //                     >
-        //                         edit_square
-        //                     </span>
-        //                 </button>
-        //             </li>
-        //             <li>
-        //                 <button
-        //                     type="button"
-        //                     class="delete-emp-btn flex-container"
-        //                 >
-        //                     <span
-        //                         class="material-symbols-rounded"
-        //                     >
-        //                         delete
-        //                     </span>
-        //                 </button>
-        //             </li>
-        //         </ul>
-        //     </td>
-        // </tr>`;
-        // empTable.innerHTML += tableRow;
     });
     tableFilter();
     console.log(employees);
 });
 
 const addEmployee = async (empObj) => {
-    // Add a new document with a generated id.
-    const docRef = await addDoc(collection(db, 'employees'), {
-        ...empObj,
-        updatedAt: serverTimestamp(),
-    });
+    // const docRef = await addDoc(collection(db, 'employees'), {
+    //     ...empObj,
+    //     updatedAt: serverTimestamp(),
+    // });
+    const docRef = await addDoc(collection(db, 'employees'), empObj);
     console.log('Document written with ID: ', docRef.id);
 };
 
 const updateEmployee = async (empObj, docId) => {
     const docRef = doc(db, 'employees', docId);
-    await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
+    // await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
+    await updateDoc(docRef, empObj);
 };
 
 const deleteEmployee = async (docId) => {

@@ -397,11 +397,17 @@ button {
     min-width: 400px;
     width: 700px;
 
-    & label {
+    h3 {
+        font-weight: normal;
+        margin: 0;
+    }
+
+    & label,
+    & h3 {
         font-size: 0.8em;
-        margin-bottom: 3px;
         position: relative;
         display: inline-block;
+        margin-bottom: 3px;
     }
 
     & input,
@@ -416,27 +422,9 @@ button {
         padding-inline: 7px;
     }
 
-    /* & fieldset {
-        border: none;
-
-        & legend {
-            font-size: 0.8em;
-            margin-bottom: 1px;
-            display: inline-block;
-        }
-    } */
-
-    & h3 {
-        font-size: 0.8em;
-        margin: 0 0 1px 0;
-        display: inline-block;
-        font-weight: normal;
-        position: relative;
-    }
-
     & .form-row {
         justify-content: space-between;
-        gap: 15px;
+        gap: 20px;
     }
 
     & .form-row > .form-entry {
@@ -452,13 +440,14 @@ button {
     }
 
     & .form-entry {
-        margin-bottom: 5px;
+        margin-bottom: 12px;
     }
 
     & .error-msg {
         color: #b70000;
         margin: 1px 0 0 0;
-        font-size: 0.6em;
+        font-size: 0.8em;
+        margin-top: 5px;
     }
 
     & #profile-photo-label {
@@ -497,6 +486,14 @@ button {
             width: 150px;
         }
     }
+
+    & input:not([type='radio'], [type='file']).error-border,
+    & select.error-border,
+    & textarea.error-border,
+    & .skills-input-container.error-border {
+        outline: 1px solid #b70000;
+        border-color: #b70000;
+    }
 }
 
 .employees-table {
@@ -506,10 +503,11 @@ button {
     border-radius: 10px;
     border: 1px solid #000;
     overflow: hidden;
+    font-size: 1.2em;
 
     & th,
     & td {
-        padding: 7px 10px;
+        padding: 10px 7px;
     }
 
     & th {

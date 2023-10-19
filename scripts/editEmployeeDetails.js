@@ -14,11 +14,11 @@ const editEmployeeDetails = (docId) => {
     const employee = employees.find((employee) => employee['id'] === docId);
     const formElem = document.querySelector('#add-emp-form');
 
-    // const profilePhoto = formElem.querySelector(
-    //     '#profile-photo-label .profile-photo'
-    // );
-    // profilePhoto.src = employee['profilePhoto'];
-    // profilePhoto.classList.add('border-1');
+    const profilePhoto = formElem.querySelector(
+        '#profile-photo-label .profile-photo'
+    );
+    profilePhoto.src = employee['profilePhoto'];
+    profilePhoto.classList.add('border-1');
 
     formElem.querySelector('#full-name').value = employee['name'];
     formElem.querySelector('#company-email').value = employee['email'];

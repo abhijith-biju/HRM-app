@@ -188,10 +188,15 @@
 //     },
 // ];
 
+// // for (const obj of employees) {
+// //     const docRef = addDoc(collection(db, 'employees'), {
+// //         ...obj,
+// //         updatedAt: serverTimestamp(),
+// //     });
+// //     console.log('Document written with ID: ', docRef.id);
+// // }
+
 // for (const obj of employees) {
-//     const docRef = addDoc(collection(db, 'employees'), {
-//         ...obj,
-//         updatedAt: serverTimestamp(),
-//     });
+//     const docRef = addDoc(collection(db, 'employees'), obj);
 //     console.log('Document written with ID: ', docRef.id);
 // }

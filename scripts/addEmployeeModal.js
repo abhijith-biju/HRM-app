@@ -1,4 +1,3 @@
-import { selectedSkillsList } from './formCustomDropdown.js';
 import { resetAddEmpForm } from './resetAddEmpForm.js';
 
 const addEmpModalDisplay = () => {
@@ -6,14 +5,21 @@ const addEmpModalDisplay = () => {
     const blurOverlay = document.getElementById('blur-overlay');
     blurOverlay.classList.remove('display-none');
 
-    blurOverlay.onclick = function () {
-        this.classList.add('display-none');
-        modalBody.classList.add('display-none');
+    blurOverlay.addEventListener('click', () => {
+        addEmpModalHide();
+    });
 
-        resetAddEmpForm();
-    };
+    modalBody
+        .querySelector('.cancel-btn')
+        .addEventListener('click', addEmpModalHide);
 
     modalBody.classList.remove('display-none');
+};
+
+const addEmpModalHide = () => {
+    document.getElementById('add-emp-modal').classList.add('display-none');
+    document.getElementById('blur-overlay').classList.add('display-none');
+    resetAddEmpForm();
 };
 
 document.getElementById('add-emp-btn').onclick = function () {
@@ -21,4 +27,4 @@ document.getElementById('add-emp-btn').onclick = function () {
     addEmpModalDisplay();
 };
 
-export { addEmpModalDisplay };
+export { addEmpModalDisplay, addEmpModalHide };
