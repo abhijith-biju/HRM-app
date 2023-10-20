@@ -124,16 +124,14 @@ dialog {
 
     &.active {
         transform: translate(-50%, 0);
-        /* transform: translateY(0); */
     }
 
     &.success {
-        /* background-color: #25694c; */
         background-color: #106610;
     }
 
     &.error {
-        background-color: rgb(186, 0, 0);
+        background-color: #ba0000;
     }
 
     & .toast-content {
@@ -459,7 +457,7 @@ button {
     min-width: 400px;
     width: 700px;
 
-    h3 {
+    & h3 {
         font-weight: normal;
         margin: 0;
     }
