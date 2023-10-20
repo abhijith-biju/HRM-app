@@ -19,6 +19,14 @@ const resetAddEmpForm = () => {
     formElem.querySelectorAll('.error-msg').forEach((elem) => {
         elem.classList.add('display-hidden');
     });
+    formElem
+        .querySelectorAll('input, textarea, select, .skills-input-container')
+        .forEach((inputElem) => inputElem.classList.remove('error-border'));
+
+    formElem.querySelector('button[type=submit]').removeAttribute('value');
+    formElem
+        .querySelector('button[type=submit]')
+        .removeAttribute('data-doc-id');
 };
 
 export { resetAddEmpForm };

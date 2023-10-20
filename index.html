@@ -6,19 +6,19 @@
         <title>HRM App</title>
         <link
             rel="shortcut icon"
-            href="assets/images/resources.ico"
+            href="assets/images/favicon.ico"
             type="image/x-icon"
         />
 
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
         <!-- google icons  -->
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -29,15 +29,15 @@
         <link rel="stylesheet" href="assets/css/common.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
-    <body>
+    <body class="flex-container">
         <div id="blur-overlay" class="display-none"></div>
-        <nav>
-            <div class="navbar flex-container margin-inline-auto">
-                <a href="">
+        <header>
+            <nav class="navbar flex-container margin-inline-auto">
+                <a href="" class="brand-logo">
                     <h1>HRM APP</h1>
                 </a>
-            </div>
-        </nav>
+            </nav>
+        </header>
         <main class="margin-inline-auto">
             <div class="table-controls flex-container">
                 <input
@@ -46,74 +46,34 @@
                     placeholder="Search By Employee Name"
                 />
 
-                <div>
+                <div class="display-none">
                     <label for="dept-search">Department</label>
                     <select
                         name="dept-search"
                         id="dept-search"
+                        class="dept-select"
                         autocomplete="off"
                     >
                         <option value="all" selected>All</option>
-                        <option value="backend">Backend</option>
-                        <option value="qa">QA</option>
-                        <option value="frontend">Frontend</option>
                     </select>
                 </div>
 
-                <div>
+                <div class="display-none">
                     <label for="role-search">Role</label>
                     <select
                         name="role-search"
                         id="role-search"
+                        class="role-select"
                         autocomplete="off"
                     >
                         <option value="all" selected>All</option>
-                        <option value="developer">Developer</option>
-                        <option value="intern">Intern</option>
-                        <option value="senior-developer">
-                            Senior Developer
-                        </option>
-                        <option value="manager">Manager</option>
-                        <option value="director">Director</option>
-                        <option value="director">
-                            Senior DeveloperSenior Developer
-                        </option>
                     </select>
                 </div>
 
                 <div class="skills-input-container flex-container">
                     <div class="custom-select-wrap margin-inline-auto">
-                        <input
-                            type="text"
-                            placeholder="Add one or more skills"
-                        />
-                        <ul class="select-options display-none">
-                            <li>
-                                <button type="button" data-value="HTML">
-                                    HTML
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="CSS">
-                                    CSS
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="JavaScript">
-                                    JavaScript
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="ReactJS">
-                                    ReactJS
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" data-value="AngularJS">
-                                    AngularJS
-                                </button>
-                            </li>
-                        </ul>
+                        <input type="text" placeholder="Filter by skills" />
+                        <ul class="select-options display-none"></ul>
                     </div>
                     <div class="selected-skills-container">
                         <div class="skill-label display-none" tabindex="0">
@@ -124,11 +84,23 @@
                     </div>
                 </div>
 
-                <button type="button" id="clear-filters-btn">
-                    Clear Filters
+                <button
+                    type="button"
+                    id="clear-filters-btn"
+                    class="btn btn-icon btn-outline"
+                >
+                    <span>Clear Filters</span>
+                    <span class="material-symbols-rounded">
+                        filter_alt_off
+                    </span>
                 </button>
 
-                <button type="button" id="add-emp-btn">
+                <button
+                    type="button"
+                    id="add-emp-btn"
+                    class="btn btn-icon btn-primary"
+                >
+                    <span>Add Employee</span>
                     <span class="material-symbols-rounded"> person_add </span>
                 </button>
             </div>
@@ -151,7 +123,6 @@
                             <input
                                 type="file"
                                 id="profile-photo-input"
-                                name="profile-photo"
                                 accept="image/*"
                                 class="display-none"
                                 required
@@ -179,12 +150,14 @@
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
                             <div class="form-entry">
-                                <label for="person-email" class="required-field"
+                                <label
+                                    for="company-email"
+                                    class="required-field"
                                     >Email</label
                                 >
                                 <input
                                     type="email"
-                                    id="person-email"
+                                    id="company-email"
                                     name="email"
                                     required
                                 />
@@ -252,8 +225,8 @@
                                     name="address"
                                     id="address"
                                     minlength="3"
-                                    maxlength="500"
-                                    rows="2"
+                                    maxlength="250"
+                                    rows="4"
                                     required
                                     spellcheck="false"
                                 ></textarea>
@@ -268,17 +241,15 @@
                                 <label for="company-role" class="required-field"
                                     >Role</label
                                 >
-                                <select name="role" id="company-role" required>
+                                <select
+                                    name="role"
+                                    id="company-role"
+                                    class="role-select"
+                                    required
+                                >
                                     <option value="" disabled selected>
                                         Select a role
                                     </option>
-                                    <option value="developer">Developer</option>
-                                    <option value="intern">Intern</option>
-                                    <option value="senior-developer">
-                                        Senior Developer
-                                    </option>
-                                    <option value="manager">Manager</option>
-                                    <option value="director">Director</option>
                                 </select>
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -290,14 +261,12 @@
                                 <select
                                     name="department"
                                     id="company-dept"
+                                    class="dept-select"
                                     required
                                 >
                                     <option value="" disabled selected>
                                         Select a department
                                     </option>
-                                    <option value="backend">Backend</option>
-                                    <option value="qa">QA</option>
-                                    <option value="frontend">Frontend</option>
                                 </select>
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -327,17 +296,12 @@
                                 <select
                                     name="location"
                                     id="company-location"
+                                    class="location-select"
                                     required
                                 >
                                     <option value="" disabled selected>
                                         Select a location
                                     </option>
-                                    <option value="trivandrum">
-                                        Trivandrum
-                                    </option>
-                                    <option value="kochi">Kochi</option>
-                                    <option value="noida">Noida</option>
-                                    <option value="chennai">Chennai</option>
                                 </select>
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -355,48 +319,9 @@
                                             placeholder="Add one or more skills"
                                             class="skill-search-input"
                                         />
-                                        <ul class="select-options display-none">
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="HTML"
-                                                >
-                                                    HTML
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="CSS"
-                                                >
-                                                    CSS
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="JavaScript"
-                                                >
-                                                    JavaScript
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="ReactJS"
-                                                >
-                                                    ReactJS
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button
-                                                    type="button"
-                                                    data-value="AngularJS"
-                                                >
-                                                    AngularJS
-                                                </button>
-                                            </li>
-                                        </ul>
+                                        <ul
+                                            class="select-options display-none"
+                                        ></ul>
                                     </div>
                                     <ul
                                         class="selected-skills-list flex-container"
@@ -407,8 +332,15 @@
                         </div>
                     </div>
                     <div class="flex-container form-controls-container">
-                        <button type="button" class="cancel-btn">CANCEL</button>
-                        <button type="submit">SUBMIT</button>
+                        <button
+                            type="button"
+                            class="btn btn-outline cancel-btn"
+                        >
+                            CANCEL
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            SUBMIT
+                        </button>
                     </div>
                 </form>
             </div>
@@ -417,7 +349,20 @@
                 <table class="employees-table">
                     <thead>
                         <th>Employee ID</th>
-                        <th>Name</th>
+                        <th>
+                            <div class="emp-name-heading flex-container">
+                                <span>Name</span>
+                                <button
+                                    class="sort-btn"
+                                    data-value="name"
+                                    data-sort-order="asc"
+                                >
+                                    <span class="material-symbols-rounded">
+                                        arrow_upward_alt
+                                    </span>
+                                </button>
+                            </div>
+                        </th>
                         <th>Email</th>
                         <th>Role</th>
                         <th>Department</th>
@@ -426,17 +371,123 @@
                     <tbody></tbody>
                 </table>
             </section>
+
+            <dialog class="confirm-dialog">
+                <p class="confirm-dialog-msg"></p>
+                <div class="flex-container confirm-dialog-actions">
+                    <button class="btn btn-outline confirm-yes-btn">Yes</button>
+                    <button class="btn btn-primary confirm-no-btn">
+                        Cancel
+                    </button>
+                </div>
+            </dialog>
+
+            <dialog class="view-emp-dialog">
+                <div class="details flex-container">
+                    <div class="main-details">
+                        <img
+                            src="assets/images/employee-avatar.svg"
+                            alt="profile photo"
+                            class="profile-photo"
+                            draggable="false"
+                        />
+                        <p class="full-name"></p>
+                        <p class="role"></p>
+                        <p class="department"></p>
+                        <p class="location"></p>
+                    </div>
+                    <div class="extended-details">
+                        <dl>
+                            <div class="data-entry">
+                                <dt>Employee ID</dt>
+                                <dd class="emp-id"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Email</dt>
+                                <dd class="email"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Gender</dt>
+                                <dd class="gender"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Date of Birth</dt>
+                                <dd class="dob"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Date of Joining</dt>
+                                <dd class="doj"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Address</dt>
+                                <dd class="address"></dd>
+                            </div>
+                            <div class="data-entry">
+                                <dt>Skills</dt>
+                                <dd>
+                                    <ul
+                                        class="selected-skills-list flex-container"
+                                    ></ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <button class="btn btn-primary confirm-no-btn">
+                    <span class="material-symbols-rounded"> close </span>
+                </button>
+            </dialog>
+
+            <div class="toast">
+                <div class="toast-content flex-container">
+                    <span
+                        class="material-symbols-rounded toast-status-icon success-icon display-none"
+                    >
+                        check_circle
+                    </span>
+                    <span
+                        class="material-symbols-rounded toast-status-icon error-icon display-none"
+                    >
+                        error
+                    </span>
+                    <div class="toast-msg-body flex-container">
+                        <span class="toast-status">Success</span>
+                        <span class="toast-info"
+                            >Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Voluptatibus, animi!</span
+                        >
+                    </div>
+                </div>
+                <span class="material-symbols-rounded toast-close-icon">
+                    close
+                </span>
+                <div class="progress"></div>
+            </div>
         </main>
-        <script type="module" src="scripts/searchCustomDropdown.js"></script>
+
+        <footer>
+            <span class="copyright-text"
+                >Copyright &#169; 2023 HRM-app.com</span
+            >
+        </footer>
+        <!-- <script type="module" src="scripts/TESTaddData.js"></script> -->
+        <script type="module" src="scripts/employeeTableDisplay.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
-        <script type="module" src="scripts/add-emp-modal.js"></script>
+        <script type="module" src="scripts/loadSelectOptions.js"></script>
+        <script type="module" src="scripts/searchCustomDropdown.js"></script>
+        <script type="module" src="scripts/tableFilter.js"></script>
+        <script type="module" src="scripts/clearFilters.js"></script>
+        <script type="module" src="scripts/editEmployeeDetails.js"></script>
+        <script type="module" src="scripts/confirmDialog.js"></script>
+        <script type="module" src="scripts/deleteEmployee.js"></script>
+        <script type="module" src="scripts/viewEmployee.js"></script>
+        <script type="module" src="scripts/addEmployeeModal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>
         <script type="module" src="scripts/formCustomDropdown.js"></script>
-        <script type="module" src="scripts/addEmployeeCancel.js"></script>
         <script type="module" src="scripts/addEmpFormValidation.js"></script>
         <!-- <script src="scripts/checkInputValidity.js"></script> -->
-        <script type="module" src="scripts/clearFilters.js"></script>
         <script type="module" src="scripts/resetAddEmpForm.js"></script>
+        <script type="module" src="scripts/toast.js"></script>
     </body>
 </html>
