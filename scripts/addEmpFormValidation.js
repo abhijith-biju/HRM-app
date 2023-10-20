@@ -28,6 +28,7 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
     const profilePhotoInput = this.querySelector('#profile-photo-input');
     const modalBody = document.getElementById('add-emp-modal');
     const submitBtn = modalBody.querySelector('button[type=submit]');
+    const loader = document.querySelector('.loader.body');
     let isFormDataValid = true;
 
     const displayError = (
@@ -82,6 +83,8 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         return false;
     }
 
+    loader.classList.add('active');
+
     const formData = Object.fromEntries(
         new FormData(document.querySelector('#add-emp-form'))
     );
@@ -110,7 +113,9 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
             formData['empId'] = values[0];
             formData['profilePhoto'] = values[1];
             addEmployee(formData);
-            addEmpModalHide();
+            console.log('here added');
+            resetAddEmpForm();
+            loader.classList.remove('active');
         });
     } else if (submitBtn.value === 'edit') {
         getPhotoUrl().then((value) => {
@@ -121,8 +126,9 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
             console.log('here promise fail');
 
             updateEmployee(formData, submitBtn.getAttribute('data-doc-id'));
-            addEmpModalHide();
+            resetAddEmpForm();
+            loader.classList.remove('active');
         });
     }
-    // addEmpModalHide();
+    addEmpModalHide();
 };

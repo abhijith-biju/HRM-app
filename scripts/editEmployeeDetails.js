@@ -51,8 +51,9 @@ const editEmployeeDetails = (docId) => {
 
         selectedSkillsContainer.innerHTML += liElem;
     });
+
+    addEmpModalDisplay();
     const submitBtn = formElem.querySelector('button[type=submit]');
     submitBtn.value = 'edit';
     submitBtn.setAttribute('data-doc-id', docId);
-    addEmpModalDisplay();
 };

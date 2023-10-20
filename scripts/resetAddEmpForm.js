@@ -1,6 +1,8 @@
 import { selectedSkillsList } from './formCustomDropdown.js';
 
 const resetAddEmpForm = () => {
+    console.log('here reset clicked!');
+
     const formElem = document.getElementById('add-emp-form');
     formElem.reset();
 
@@ -23,6 +25,7 @@ const resetAddEmpForm = () => {
         .querySelectorAll('input, textarea, select, .skills-input-container')
         .forEach((inputElem) => inputElem.classList.remove('error-border'));
 
+    //remove value attribute on submit btn element
     formElem.querySelector('button[type=submit]').removeAttribute('value');
     formElem
         .querySelector('button[type=submit]')

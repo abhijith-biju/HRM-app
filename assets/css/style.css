@@ -183,9 +183,18 @@ dialog {
     border: 5px solid #fff;
     border-bottom-color: var(--primary-clr);
     border-radius: 50%;
-    display: inline-block;
+    display: none;
     box-sizing: border-box;
     animation: rotation 500ms linear infinite;
+
+    &.active {
+        display: block;
+    }
+
+    &.body {
+        width: 60px;
+        height: 60px;
+    }
 }
 
 @keyframes rotation {
@@ -733,17 +742,13 @@ button {
     & dt {
         font-size: 1em;
         font-weight: 500;
-
-        /* &::after {
-            content: ' :';
-            margin-right: 5px;
-        } */
     }
 
     & dd {
         font-size: 1.2em;
         font-weight: 300;
         color: rgb(43, 42, 42);
+        word-wrap: break-word;
     }
 
     & .selected-skills-list {
