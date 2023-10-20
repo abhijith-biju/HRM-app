@@ -93,8 +93,10 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
         const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
 
         if (!profilePhotoInput.files.length) {
+            console.log('here length 0');
             return Promise.resolve(false);
         }
+        console.log('here length not 0');
 
         return uploadBytes(storageRef, profilePhotoInput.files[0]).then(
             (snapshot) => {
@@ -113,10 +115,14 @@ document.querySelector('#add-emp-form').onsubmit = function (e) {
     } else if (submitBtn.value === 'edit') {
         getPhotoUrl().then((value) => {
             if (value) {
+                console.log('here generated link');
                 formData['profilePhoto'] = value;
             }
+            console.log('here promise fail');
+
             updateEmployee(formData, submitBtn.getAttribute('data-doc-id'));
             addEmpModalHide();
         });
     }
+    // addEmpModalHide();
 };

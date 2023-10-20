@@ -34,6 +34,7 @@ let employees = [];
 onSnapshot(colRef, (snapshot) => {
     employees = [];
 
+    // console.log(snapshot.metadata.hasPendingWrites ? 'Local' : 'Server');
     snapshot.docs.forEach((doc) => {
         employees.push({ ...doc.data(), id: doc.id });
     });
