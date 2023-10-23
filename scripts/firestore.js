@@ -1,19 +1,23 @@
 import { displayToast } from './toast.js';
+import { tableFilter } from './tableFilter.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
 import {
     getFirestore,
     collection,
-    query,
-    orderBy,
     getDocs,
     onSnapshot,
     addDoc,
     updateDoc,
     deleteDoc,
     doc,
-    serverTimestamp,
+    getDoc,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js';
-import { tableFilter } from './tableFilter.js';
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyCA7aaXgARdDjMXAjCzxBGkmVKxwXKuBZA',
@@ -27,11 +31,8 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
-const colRef = collection(db, 'employees');
-// const q = query(colRef, orderBy('updatedAt', 'desc'));
-
 let employees = [];
-onSnapshot(colRef, (snapshot) => {
+onSnapshot(collection(db, 'employees'), (snapshot) => {
     employees = [];
 
     // console.log(snapshot.metadata.hasPendingWrites ? 'Local' : 'Server');
@@ -44,12 +45,7 @@ onSnapshot(colRef, (snapshot) => {
 
 const addEmployee = async (empObj) => {
     try {
-        // const docRef = await addDoc(collection(db, 'employees'), {
-        //     ...empObj,
-        //     updatedAt: serverTimestamp(),
-        // });
-        const docRef = await addDoc(collection(db, 'employees'), empObj);
-        console.log('Document written with ID: ', docRef.id);
+        await addDoc(collection(db, 'employees'), empObj);
         displayToast('success', 'Added employee details.');
     } catch (err) {
         displayToast('error', `Couldn't add employee details.`);
@@ -59,9 +55,7 @@ const addEmployee = async (empObj) => {
 
 const updateEmployee = async (empObj, docId) => {
     try {
-        const docRef = doc(db, 'employees', docId);
-        // await updateDoc(docRef, { ...empObj, updatedAt: serverTimestamp() });
-        await updateDoc(docRef, empObj);
+        await updateDoc(doc(db, 'employees', docId), empObj);
         displayToast('success', 'Updated employee details.');
     } catch (err) {
         displayToast('error', `Couldn't update employee details.`);
@@ -71,8 +65,7 @@ const updateEmployee = async (empObj, docId) => {
 
 const deleteEmployee = async (docId) => {
     try {
-        const docRef = doc(db, 'employees', docId);
-        await deleteDoc(docRef);
+        await deleteDoc(doc(db, 'employees', docId));
         displayToast('success', 'Deleted employee details.');
     } catch (err) {
         displayToast('error', `Couldn't delete employee details.`);
@@ -80,26 +73,38 @@ const deleteEmployee = async (docId) => {
     }
 };
 
-const getNewEmpId = () => {
-    const EmpIdColRef = collection(db, 'empIdCounter');
-    return getDocs(EmpIdColRef)
-        .then((snapshot) => {
-            const currentVal = snapshot.docs[0];
-            updateDoc(doc(db, 'empIdCounter', currentVal.id), {
-                empIdCounter: snapshot.docs[0].data().empIdCounter + 1,
-            });
-            return snapshot.docs[0].data().empIdCounter;
-        })
-        .catch((err) => {
-            console.log(err.message);
-        });
+const getPhotoUrl = (files) => {
+    //no file uploaded
+    if (!files.length) {
+        return Promise.resolve(false);
+    }
+    console.log('file added');
+
+    const storage = getStorage();
+    const storageRef = ref(storage, `employees/${crypto.randomUUID()}`);
+
+    return uploadBytes(storageRef, files[0]).then((snapshot) => {
+        return getDownloadURL(snapshot.ref);
+    });
+};
+
+const getNextEmpId = () => {
+    return new Promise(async (resolve) => {
+        const docRef = doc(db, 'empIdCounter', 'empIdCounter');
+        const docSnap = await getDoc(docRef);
+
+        const empId = docSnap.data().nextEmpIdVal;
+        await updateDoc(docRef, { nextEmpIdVal: empId + 1 });
+        resolve(empId);
+    });
 };
 
 export {
     addEmployee,
     updateEmployee,
     deleteEmployee,
-    getNewEmpId,
+    getNextEmpId,
+    getPhotoUrl,
     employees,
     db,
 };

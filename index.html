@@ -160,6 +160,7 @@
                                     id="company-email"
                                     name="email"
                                     required
+                                    value="@qburst.com"
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -371,7 +372,9 @@
                     <tbody>
                         <tr>
                             <td colspan="6" class="text-center">
-                                <span class="loader active"></span>
+                                <span
+                                    class="loader active margin-inline-auto"
+                                ></span>
                             </td>
                         </tr>
                     </tbody>
@@ -466,7 +469,7 @@
                 </span>
             </div>
 
-            <span class="loader body active margin-inline-auto"></span>
+            <span class="loader full-screen-loader"></span>
         </main>
 
         <footer>
@@ -474,7 +477,8 @@
                 >Copyright &#169; 2023 HRM-app.com</span
             >
         </footer>
-        <!-- <script type="module" src="scripts/TESTaddData.js"></script> -->
+
+        <script type="module" src="scripts/fullScreenLoader.js"></script>
         <script type="module" src="scripts/employeeTableDisplay.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
         <script type="module" src="scripts/loadSelectOptions.js"></script>
@@ -485,13 +489,13 @@
         <script type="module" src="scripts/confirmDialog.js"></script>
         <script type="module" src="scripts/deleteEmployee.js"></script>
         <script type="module" src="scripts/viewEmployee.js"></script>
-        <script type="module" src="scripts/addEmployeeModal.js"></script>
+        <script type="module" src="scripts/manageEmployeeModal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>
         <script type="module" src="scripts/formCustomDropdown.js"></script>
-        <script type="module" src="scripts/addEmpFormValidation.js"></script>
-        <!-- <script src="scripts/checkInputValidity.js"></script> -->
-        <script type="module" src="scripts/resetAddEmpForm.js"></script>
+        <script type="module" src="scripts/manageEmpFormValidation.js"></script>
+        <script type="module" src="scripts/manageEmpFormSubmit.js"></script>
+        <script type="module" src="scripts/manageEmpFormReset.js"></script>
         <script type="module" src="scripts/toast.js"></script>
     </body>
 </html>
