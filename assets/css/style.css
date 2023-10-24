@@ -486,6 +486,7 @@ button {
     padding: 25px 30px;
     max-height: 95vh;
     overflow: auto;
+    height: auto;
 }
 
 #add-emp-form {

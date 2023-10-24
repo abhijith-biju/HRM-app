@@ -12,14 +12,14 @@ const DisplayManageEmpModal = () => {
         blurOverlay.classList.add('display-none');
         resetManageEmpForm();
     });
-
     modalBody.classList.remove('display-none');
 };
 
 const hideManageEmpModal = () => {
     const modalBody = document.getElementById('add-emp-modal');
+    modalBody.scrollTo({ top: 0 });
     modalBody.classList.add('display-none');
-    //TODO: add scroll to top of modal
+
     document.querySelector('body').classList.remove('body-no-scroll');
 };
 

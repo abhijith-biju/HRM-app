@@ -1,4 +1,3 @@
-import { employeeTableDisplay } from './employeeTableDisplay.js';
 import { tableFilter } from './tableFilter.js';
 
 const selectedSkillsForSearch = new Set();
@@ -22,6 +21,7 @@ document.querySelector('.table-controls .skills-input-container input').onblur =
         const isOptionClicked = optionsContainer.contains(e.relatedTarget);
 
         if (!isOptionClicked) {
+            optionsContainer.scrollTo({ top: 0, behavior: 'smooth' });
             optionsContainer.classList.add('display-none');
         }
     };
@@ -69,7 +69,6 @@ document.querySelector(
         </li>`;
         selectedSkillsList.innerHTML += liElem;
 
-        // employeeTableDisplay();
         tableFilter();
     }
 
@@ -111,7 +110,6 @@ document.querySelector('.table-controls .selected-skills-list').onclick = (
             SkillRemoveBtnElem.closest('.skill-chip')
         );
 
-        // employeeTableDisplay();
         tableFilter();
     }
 
@@ -125,8 +123,6 @@ document.querySelector('.table-controls .selected-skills-list').onclick = (
 document.querySelector(
     '.table-controls .selected-skills-container .skill-label'
 ).onfocus = (e) => {
-    // console.log('skill label focused');
-
     const selectedSkillsList = document.querySelector(
         '.table-controls .selected-skills-container .selected-skills-list'
     );
@@ -137,14 +133,12 @@ document.querySelector(
 document.querySelector(
     '.table-controls .selected-skills-container .skill-label'
 ).onblur = (e) => {
-    // console.log('skill label blur');
     const selectedSkillsList = document.querySelector(
         '.table-controls .selected-skills-container .selected-skills-list'
     );
     const isRemoveSkillClicked = selectedSkillsList.contains(e.relatedTarget);
 
     if (!isRemoveSkillClicked) {
-        // console.log('remove not clicked');
         selectedSkillsList.classList.add('display-none');
         selectedSkillsList.classList.remove('flex-container');
     }
