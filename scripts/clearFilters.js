@@ -16,6 +16,14 @@ document.getElementById('clear-filters-btn').onclick = () => {
         '.selected-skills-container'
     );
 
+    //reset skills dropdown options
+    const optionsContainer = tableControlsElem.querySelector(
+        '.skills-input-container .select-options'
+    );
+    for (const liElem of optionsContainer.children) {
+        liElem.classList.remove('display-none');
+    }
+
     selectedSkillsContainer
         .querySelector('.skill-label')
         .classList.add('display-none');

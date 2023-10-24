@@ -76,5 +76,3 @@ loadSkillOptions();
 loadDepartmentOptions();
 loadRoleOptions();
 loadLocationOptions();
-
-export { getOptionsData };

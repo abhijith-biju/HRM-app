@@ -1,25 +1,16 @@
-import { getOptionsData } from './loadSelectOptions.js';
-
-// const loadSkillsOptions = async () => {
-//     let data = await getOptionsData('location');
-// };
-
-// const skillOptions = await getOptionsData('skills');
-const inpElem = document.querySelector(
-    '.table-controls .custom-select-wrap input'
-);
-const dropdownElem = document.querySelector(
-    '.table-controls .custom-select-wrap .select-options'
-);
-
 const filterSelectOptions = (inpElem, dropdownElem) => {
     const searchValue = inpElem.value.trim().toLowerCase();
 
     for (const liElem of dropdownElem.children) {
         const btnElem = liElem.firstElementChild;
+        const optionVal = btnElem.getAttribute('data-value').toLowerCase();
+
+        if (searchValue && optionVal.indexOf(searchValue) === -1) {
+            liElem.classList.add('display-none');
+        } else {
+            liElem.classList.remove('display-none');
+        }
     }
 };
 
-inpElem.addEventListener('keyup', () => {
-    filterSelectOptions(inpElem, dropdownElem);
-});
+export { filterSelectOptions };
