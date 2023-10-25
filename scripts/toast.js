@@ -7,6 +7,7 @@ document.querySelector('.toast-close-icon').addEventListener('click', () => {
 
 const displayToast = (status, info) => {
     const toastElem = document.querySelector('.toast');
+    const TOAST_DISPLAY_TIME = 5000;
 
     //removing any previously added status class from toast element
     ['success', 'error'].forEach((status) =>
@@ -41,7 +42,7 @@ const displayToast = (status, info) => {
 
     toastTimer = setTimeout(() => {
         toastElem.classList.remove('active');
-    }, 5000);
+    }, TOAST_DISPLAY_TIME);
 };
 
 export { displayToast };
