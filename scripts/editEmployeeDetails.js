@@ -1,4 +1,4 @@
-import { addEmpModalDisplay } from './addEmployeeModal.js';
+import { DisplayManageEmpModal } from './manageEmployeeModal.js';
 import { employees } from './firestore.js';
 import { selectedSkillsList } from './formCustomDropdown.js';
 
@@ -51,8 +51,8 @@ const editEmployeeDetails = (docId) => {
 
         selectedSkillsContainer.innerHTML += liElem;
     });
-    const submitBtn = formElem.querySelector('button[type=submit]');
-    submitBtn.value = 'edit';
-    submitBtn.setAttribute('data-doc-id', docId);
-    addEmpModalDisplay();
+
+    DisplayManageEmpModal();
+    formElem.setAttribute('data-submit-action', 'edit');
+    formElem.setAttribute('data-doc-id', docId);
 };

@@ -29,7 +29,15 @@ body {
     min-height: 100%;
     position: relative;
     font-family: var(--primary-font);
-    /* height: 2000px; */
+}
+
+.body-no-scroll {
+    height: 100vh;
+    width: 100vw;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+    overflow: hidden;
+    overscroll-behavior: none;
 }
 
 a {
@@ -107,6 +115,7 @@ dialog {
 .toast {
     --bottom-pos: 15px;
 
+    /* display: none; */
     min-width: 400px;
     width: max-content;
     max-width: 500px;
@@ -114,21 +123,20 @@ dialog {
     padding: 15px 40px 15px 15px;
     font-size: 1.2em;
     color: #fff;
-    position: fixed;
-    left: 50%;
-    bottom: var(--bottom-pos);
-    transform: translate(-50%, calc(100% + var(--bottom-pos)));
-    transition: transform 0.5s ease-out;
     background-color: var(--primary-clr);
     box-shadow: 0 6px 20px -5px rgba(0, 0, 0);
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    translate: -50% 100%;
+    transition: translate 0.5s ease-out;
 
     &.active {
-        transform: translate(-50%, 0);
-        /* transform: translateY(0); */
+        /* display: block; */
+        translate: -50% -20px;
     }
 
     &.success {
-        /* background-color: #25694c; */
         background-color: #106610;
     }
 
@@ -177,8 +185,40 @@ dialog {
     }
 }
 
+.loader {
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: var(--primary-clr);
+    border-radius: 50%;
+    animation: rotation 500ms linear infinite;
+
+    &.full-screen-loader {
+        width: 80px;
+        height: 80px;
+        z-index: 25;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+    }
+
+    &.active {
+        display: block;
+    }
+}
+
+@keyframes rotation {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
+
 #blur-overlay {
-    cursor: pointer;
     position: fixed;
     inset: 0 0 0 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -296,20 +336,17 @@ button {
 
     & .select-options {
         position: absolute;
-        /* top: 100%; */
-        /* top: calc(100% - 1px); */
         bottom: calc(100% + 1px);
         left: 0;
         background-color: #fff;
         width: 100%;
+        min-width: min-content;
         border: 1px solid #b5b5b5;
         border-radius: 5px;
         z-index: 4;
-        /* max-height: 82px; */
         max-height: 200px;
         overflow: auto;
         list-style: none;
-        /* padding: 3px 0; */
         padding: 0;
         margin: 0;
     }
@@ -382,7 +419,6 @@ button {
         & .select-options {
             bottom: auto;
             top: calc(100% + 1px);
-            width: 100%;
         }
     }
 
@@ -440,18 +476,17 @@ button {
 }
 
 .modal-body {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    /* top: 20px; */
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* transform: translateX(-50%); */
+    translate: -50% -50%;
     z-index: 20;
     border-radius: 5px;
     background-color: #fff;
     padding: 25px 30px;
     max-height: 95vh;
     overflow: auto;
+    height: auto;
 }
 
 #add-emp-form {
@@ -579,7 +614,6 @@ button {
 }
 
 .employees-table .emp-name-heading {
-    /* background-color: yellow; */
     align-items: center;
     gap: 3px;
 
@@ -587,7 +621,7 @@ button {
         padding: 0;
 
         &.desc {
-            transform: rotateX(180deg);
+            rotate: 180deg;
         }
 
         & span {
@@ -596,16 +630,11 @@ button {
         }
 
         &:hover span {
-            transform: scale(1.1);
+            scale: 1.1;
             font-variation-settings: 'wght' 450;
         }
     }
 }
-
-/* .employees-table th:not(:last-child),
-.employees-table td:not(:last-child) {
-    border-right: 1px solid #000;
-} */
 
 .employees-table th,
 .employees-table tr:not(:last-child) td {
@@ -628,7 +657,7 @@ button {
         color: #000;
 
         &:hover {
-            transform: scale(1.2);
+            scale: 1.2;
             font-variation-settings: 'FILL' 1;
         }
     }
@@ -713,17 +742,13 @@ button {
     & dt {
         font-size: 1em;
         font-weight: 500;
-
-        /* &::after {
-            content: ' :';
-            margin-right: 5px;
-        } */
     }
 
     & dd {
         font-size: 1.2em;
         font-weight: 300;
         color: rgb(43, 42, 42);
+        word-wrap: break-word;
     }
 
     & .selected-skills-list {

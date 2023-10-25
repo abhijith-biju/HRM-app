@@ -80,7 +80,7 @@
                             <span>Skills</span>
                             <span class="count-label">*</span>
                         </div>
-                        <ul class="selected-skills-list"></ul>
+                        <ul class="selected-skills-list" tabindex="0"></ul>
                     </div>
                 </div>
 
@@ -160,6 +160,7 @@
                                     id="company-email"
                                     name="email"
                                     required
+                                    value="@qburst.com"
                                 />
                                 <p class="error-msg display-hidden">Hello</p>
                             </div>
@@ -368,7 +369,15 @@
                         <th>Department</th>
                         <th>Actions</th>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <span
+                                    class="loader active margin-inline-auto"
+                                ></span>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
 
@@ -451,18 +460,16 @@
                         error
                     </span>
                     <div class="toast-msg-body flex-container">
-                        <span class="toast-status">Success</span>
-                        <span class="toast-info"
-                            >Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Voluptatibus, animi!</span
-                        >
+                        <span class="toast-status">Status</span>
+                        <span class="toast-info">Message</span>
                     </div>
                 </div>
                 <span class="material-symbols-rounded toast-close-icon">
                     close
                 </span>
-                <div class="progress"></div>
             </div>
+
+            <span class="loader full-screen-loader"></span>
         </main>
 
         <footer>
@@ -470,24 +477,26 @@
                 >Copyright &#169; 2023 HRM-app.com</span
             >
         </footer>
-        <!-- <script type="module" src="scripts/TESTaddData.js"></script> -->
+
+        <script type="module" src="scripts/fullScreenLoader.js"></script>
         <script type="module" src="scripts/employeeTableDisplay.js"></script>
         <script type="module" src="scripts/firestore.js"></script>
         <script type="module" src="scripts/loadSelectOptions.js"></script>
         <script type="module" src="scripts/searchCustomDropdown.js"></script>
         <script type="module" src="scripts/tableFilter.js"></script>
         <script type="module" src="scripts/clearFilters.js"></script>
+        <script type="module" src="scripts/filterSelectOptions.js"></script>
         <script type="module" src="scripts/editEmployeeDetails.js"></script>
         <script type="module" src="scripts/confirmDialog.js"></script>
         <script type="module" src="scripts/deleteEmployee.js"></script>
         <script type="module" src="scripts/viewEmployee.js"></script>
-        <script type="module" src="scripts/addEmployeeModal.js"></script>
+        <script type="module" src="scripts/manageEmployeeModal.js"></script>
         <script type="module" src="scripts/dateInputConstraint.js"></script>
         <script type="module" src="scripts/formPhotoInput.js"></script>
         <script type="module" src="scripts/formCustomDropdown.js"></script>
-        <script type="module" src="scripts/addEmpFormValidation.js"></script>
-        <!-- <script src="scripts/checkInputValidity.js"></script> -->
-        <script type="module" src="scripts/resetAddEmpForm.js"></script>
+        <script type="module" src="scripts/manageEmpFormValidation.js"></script>
+        <script type="module" src="scripts/manageEmpFormSubmit.js"></script>
+        <script type="module" src="scripts/manageEmpFormReset.js"></script>
         <script type="module" src="scripts/toast.js"></script>
     </body>
 </html>

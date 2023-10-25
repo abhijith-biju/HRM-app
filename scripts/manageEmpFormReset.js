@@ -1,6 +1,6 @@
 import { selectedSkillsList } from './formCustomDropdown.js';
 
-const resetAddEmpForm = () => {
+const resetManageEmpForm = () => {
     const formElem = document.getElementById('add-emp-form');
     formElem.reset();
 
@@ -15,6 +15,14 @@ const resetAddEmpForm = () => {
     formElem.querySelector('.selected-skills-list').innerHTML = '';
     selectedSkillsList.clear();
 
+    //reset skills dropdown options
+    const optionsContainer = formElem.querySelector(
+        '.skills-input-container .select-options'
+    );
+    for (const liElem of optionsContainer.children) {
+        liElem.classList.remove('display-none');
+    }
+
     //reset all input status messages
     formElem.querySelectorAll('.error-msg').forEach((elem) => {
         elem.classList.add('display-hidden');
@@ -23,10 +31,9 @@ const resetAddEmpForm = () => {
         .querySelectorAll('input, textarea, select, .skills-input-container')
         .forEach((inputElem) => inputElem.classList.remove('error-border'));
 
-    formElem.querySelector('button[type=submit]').removeAttribute('value');
-    formElem
-        .querySelector('button[type=submit]')
-        .removeAttribute('data-doc-id');
+    //remove data attributes on form element
+    formElem.removeAttribute('data-submit-action');
+    formElem.removeAttribute('data-doc-id');
 };
 
-export { resetAddEmpForm };
+export { resetManageEmpForm };

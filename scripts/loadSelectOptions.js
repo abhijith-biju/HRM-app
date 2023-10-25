@@ -16,8 +16,7 @@ const getOptionsData = (collectionName) => {
 };
 
 const loadSkillOptions = async () => {
-    let data;
-    await getOptionsData('skills').then((res) => (data = res));
+    let data = await getOptionsData('skills');
 
     for (const optionsElem of document
         .querySelectorAll('.select-options')
@@ -35,8 +34,7 @@ const loadSkillOptions = async () => {
 };
 
 const loadDepartmentOptions = async () => {
-    let data;
-    await getOptionsData('department').then((res) => (data = res));
+    let data = await getOptionsData('department');
 
     for (const selectElem of document
         .querySelectorAll('.dept-select')
@@ -49,8 +47,7 @@ const loadDepartmentOptions = async () => {
 };
 
 const loadRoleOptions = async () => {
-    let data;
-    await getOptionsData('role').then((res) => (data = res));
+    let data = await getOptionsData('role');
 
     for (const selectElem of document
         .querySelectorAll('.role-select')
@@ -63,8 +60,7 @@ const loadRoleOptions = async () => {
 };
 
 const loadLocationOptions = async () => {
-    let data;
-    await getOptionsData('location').then((res) => (data = res));
+    let data = await getOptionsData('location');
 
     for (const selectElem of document
         .querySelectorAll('.location-select')
