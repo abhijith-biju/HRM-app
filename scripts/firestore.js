@@ -35,12 +35,10 @@ let employees = [];
 onSnapshot(collection(db, 'employees'), (snapshot) => {
     employees = [];
 
-    // console.log(snapshot.metadata.hasPendingWrites ? 'Local' : 'Server');
     snapshot.docs.forEach((doc) => {
         employees.push({ ...doc.data(), id: doc.id });
     });
     tableFilter();
-    console.log(employees);
 });
 
 const addEmployee = async (empObj) => {
@@ -49,7 +47,6 @@ const addEmployee = async (empObj) => {
         displayToast('success', 'Added employee details.');
     } catch (err) {
         displayToast('error', `Couldn't add employee details.`);
-        console.log(err);
     }
 };
 
@@ -59,7 +56,6 @@ const updateEmployee = async (empObj, docId) => {
         displayToast('success', 'Updated employee details.');
     } catch (err) {
         displayToast('error', `Couldn't update employee details.`);
-        console.log(err);
     }
 };
 
@@ -69,7 +65,6 @@ const deleteEmployee = async (docId) => {
         displayToast('success', 'Deleted employee details.');
     } catch (err) {
         displayToast('error', `Couldn't delete employee details.`);
-        console.log(err);
     }
 };
 
